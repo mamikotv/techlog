@@ -3,35 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tech.halflite.net/posts/helloworld/</loc>
+    <loc>https://halflite.github.io/techlog/posts/helloworld/</loc>
     <lastmod>2019-12-26T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tech.halflite.net/categories/</loc>
+    <loc>https://halflite.github.io/techlog/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tech.halflite.net/tags/etc/</loc>
-    <lastmod>2019-12-26T00:00:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tech.halflite.net/posts/</loc>
+    <loc>https://halflite.github.io/techlog/tags/etc/</loc>
     <lastmod>2019-12-26T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tech.halflite.net/tags/</loc>
+    <loc>https://halflite.github.io/techlog/posts/</loc>
     <lastmod>2019-12-26T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tech.halflite.net/</loc>
+    <loc>https://halflite.github.io/techlog/tags/</loc>
+    <lastmod>2019-12-26T00:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://halflite.github.io/techlog/</loc>
     <lastmod>2019-12-26T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>

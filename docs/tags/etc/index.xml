@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Etc on ひとり開発日記。</title>
-    <link>https://tech.halflite.net/tags/etc/</link>
+    <link>https://halflite.github.io/techlog/tags/etc/</link>
     <description>Recent content in Etc on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0900</lastBuildDate>
     
-	<atom:link href="https://tech.halflite.net/tags/etc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello World.</title>
-      <link>https://tech.halflite.net/posts/helloworld/</link>
+      <link>https://halflite.github.io/techlog/posts/helloworld/</link>
       <pubDate>Thu, 26 Dec 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://tech.halflite.net/posts/helloworld/</guid>
+      <guid>https://halflite.github.io/techlog/posts/helloworld/</guid>
       <description> はてなグループの終了日を2020年1月31日(金)に決定しました - はてなグループ日記 - 機能変更、お知らせなど  …ということなので、技術ブログも、お引越しです。
 旧ブログは、こちら。
  ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org   </description>

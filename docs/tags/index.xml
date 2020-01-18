@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on ひとり開発日記。</title>
-    <link>https://tech.halflite.net/tags/</link>
+    <link>https://halflite.github.io/techlog/tags/</link>
     <description>Recent content in Tags on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0900</lastBuildDate>
     
-	<atom:link href="https://tech.halflite.net/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://halflite.github.io/techlog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Etc</title>
-      <link>https://tech.halflite.net/tags/etc/</link>
+      <link>https://halflite.github.io/techlog/tags/etc/</link>
       <pubDate>Thu, 26 Dec 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://tech.halflite.net/tags/etc/</guid>
+      <guid>https://halflite.github.io/techlog/tags/etc/</guid>
       <description></description>
     </item>
     
