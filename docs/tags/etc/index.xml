@@ -6,10 +6,22 @@
     <description>Recent content in Etc on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo/GitHubPagesでブログ再作成</title>
+      <link>https://halflite.github.io/techlog/posts/buildwithhugo/</link>
+      <pubDate>Thu, 16 Jan 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/buildwithhugo/</guid>
+      <description>一瞬、LivedoorBlogで作った時期もあるんですけど、やっぱり技術ブログなので…。
+ Markdownで書きたい シンタックスハイライトが欲しい ブログパーツとかいらない  やはり、上記3条件は必須ですかねぇ。
+以下、参考にした記事
+ Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます   </description>
+    </item>
     
     <item>
       <title>Hello World.</title>
