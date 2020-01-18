@@ -3,3 +3,5 @@ languageCode = "ja"
 title = "ひとり開発日記。"
 
 theme = "hugo-primer"
+
+publishDir = "docs"
