@@ -1,0 +1,5 @@
+baseURL = "https://tech.halflite.net/"
+languageCode = "ja"
+title = "ひとり開発日記。"
+
+theme = "hugo-primer"
