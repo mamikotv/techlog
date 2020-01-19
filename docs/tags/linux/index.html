@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-  Etc &ndash; ひとり開発日記。
+  Linux &ndash; ひとり開発日記。
 
     </title>
     
@@ -49,7 +49,7 @@
 
 <div>
 
-  <h1>Etc</h1>
+  <h1>Linux</h1>
   
 
   
@@ -58,8 +58,8 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
-      <a href="/techlog/posts/buildwithhugo/">
-        <div class="h2 mt-1 mb-1">Hugo/GitHubPagesでブログ再作成</div>
+      <a href="/techlog/posts/20200117_git_ver/">
+        <div class="h2 mt-1 mb-1">2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</div>
       </a>
     </div>
     <div class="Subhead-description">
@@ -68,58 +68,22 @@
 
 
 
-<a href='/techlog/tags/etc' class="muted-link">
-  <span class="Label Label--gray">etc</span>
+<a href='/techlog/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
 </a>
 
 
       <div class="float-md-right">
-        <span>2020-01-16</span>
+        <span>2020-01-17</span>
       </div>
     </div>
   </div>
   <div class="text-gray">
     
-    一瞬、LivedoorBlogで作った時期もあるんですけど、やっぱり技術ブログなので…。
- Markdownで書きたい シンタックスハイライトが欲しい ブログパーツとかいらない  やはり、上記3条件は必須ですかねぇ。
-以下、参考にした記事
- Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます   
-    <a class="muted-link" href="/techlog/posts/buildwithhugo/">…</a>
-  </div>
-</div>
-
-  
-    
-    
-<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
-  <div class="Subhead mb-2">
-    <div class="Subhead-heading">
-      <a href="/techlog/posts/helloworld/">
-        <div class="h2 mt-1 mb-1">Hello World.</div>
-      </a>
-    </div>
-    <div class="Subhead-description">
-      
-
-
-
-
-<a href='/techlog/tags/etc' class="muted-link">
-  <span class="Label Label--gray">etc</span>
-</a>
-
-
-      <div class="float-md-right">
-        <span>2019-12-26</span>
-      </div>
-    </div>
-  </div>
-  <div class="text-gray">
-    
-     はてなグループの終了日を2020年1月31日(金)に決定しました - はてなグループ日記 - 機能変更、お知らせなど  …ということなので、技術ブログも、お引越しです。
-旧ブログは、こちら。
- ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org   
-    <a class="muted-link" href="/techlog/posts/helloworld/">…</a>
+     CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSをして再度インスール… え&hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+結局、こうなりますわ。
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  
+    <a class="muted-link" href="/techlog/posts/20200117_git_ver/">…</a>
   </div>
 </div>
 

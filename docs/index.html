@@ -56,6 +56,19 @@
   
   <div>
     <div>
+      <a href="/techlog/posts/20200117_git_ver/">
+        <h3>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</h3>
+      </a>
+      <small>https://halflite.github.io/techlog/posts/20200117_git_ver/</small>
+      2020-01-17
+    </div>
+     CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSをして再度インスール… え&hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+結局、こうなりますわ。
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  
+  </div>
+  
+  <div>
+    <div>
       <a href="/techlog/posts/buildwithhugo/">
         <h3>Hugo/GitHubPagesでブログ再作成</h3>
       </a>

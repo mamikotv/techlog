@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。 &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSをして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+結局、こうなりますわ。
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  |">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+<a href='/techlog/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-01-17. Published at: 2020-01-17.">
+        
+          Published: 2020-01-17
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <ol>
+<li>CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!!</li>
+<li>Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!!</li>
+<li><code>git --version</code> って、まだ1.x系なの?</li>
+<li>しゃーない、一旦アンインストールして、リポジトリIUSをして再度インスール…</li>
+<li>え&hellip;??? 依存ライブラリが無いの…???</li>
+</ol>
+
+<pre><code>sudo yum -y remove git
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install git --enablerepo=ius --disablerepo=base
+</code></pre>
+
+<p>上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!</p>
+
+<p>結局、こうなりますわ。</p>
+
+<pre><code>sudo yum -y remove git
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error
+sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates
+</code></pre>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</b></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
