@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Windowsのcmd.exeで、Mavenを使って新規プロジェクトを作る時、複数行に分けて書きたかっただけだった。 &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="新しいライブラリやフレームワークを試す時、素振りも兼ねて、小さいJavaプロジェクトを作ってみるんですが、毎回Maven Archetypeの書き方を忘れて、自分のblogを読み返してしまったり。
+この度、blog移設なので、ここでも書き記しておく次第です。
+mvn archetype:generate ^ -DarchetypeArtifactId=maven-archetype-quickstart ^ -DinteractiveMode=false ^ -DgroupId=net.halflite ^ -DartifactId=testapp ^ -Dpackage=net.halflite.testapp  もとねた
+ Maven Quickstart Archetype – Maven Quickstart Archetype cmdのバッチファイルで、1コマンドを複数行にわたって記述したい場合 - Qiita  |">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Windowsのcmd.exeで、Mavenを使って新規プロジェクトを作る時、複数行に分けて書きたかっただけだった。</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-01-20. Published at: 2020-01-20.">
+        
+          Published: 2020-01-20
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>新しいライブラリやフレームワークを試す時、素振りも兼ねて、小さいJavaプロジェクトを作ってみるんですが、毎回Maven Archetypeの書き方を忘れて、自分のblogを読み返してしまったり。</p>
+
+<p>この度、blog移設なので、ここでも書き記しておく次第です。</p>
+
+<pre><code>mvn archetype:generate ^
+  -DarchetypeArtifactId=maven-archetype-quickstart ^
+  -DinteractiveMode=false ^
+  -DgroupId=net.halflite ^
+  -DartifactId=testapp ^
+  -Dpackage=net.halflite.testapp
+</code></pre>
+
+<hr />
+
+<p>もとねた</p>
+
+<ul>
+<li><a href="http://maven.apache.org/archetypes/maven-archetype-quickstart/" title="Maven Quickstart Archetype – Maven Quickstart Archetype">Maven Quickstart Archetype – Maven Quickstart Archetype</a></li>
+<li><a href="https://qiita.com/ndxbn/items/089b97e33ae9b69bf48b" title="cmdのバッチファイルで、1コマンドを複数行にわたって記述したい場合 - Qiita">cmdのバッチファイルで、1コマンドを複数行にわたって記述したい場合 - Qiita</a></li>
+</ul>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Windowsのcmd.exeで、Mavenを使って新規プロジェクトを作る時、複数行に分けて書きたかっただけだった。</b></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://halflite.github.io/techlog/posts/20200120_maven_cmd/</loc>
+    <lastmod>2020-01-20T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://halflite.github.io/techlog/posts/20200117_git_ver/</loc>
     <lastmod>2020-01-17T01:00:00+09:00</lastmod>
   </url>
@@ -36,7 +41,7 @@
   
   <url>
     <loc>https://halflite.github.io/techlog/posts/</loc>
-    <lastmod>2020-01-17T01:00:00+09:00</lastmod>
+    <lastmod>2020-01-20T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -48,7 +53,7 @@
   
   <url>
     <loc>https://halflite.github.io/techlog/</loc>
-    <lastmod>2020-01-17T01:00:00+09:00</lastmod>
+    <lastmod>2020-01-20T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
