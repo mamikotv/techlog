@@ -8,8 +8,10 @@ tags:
 
 また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
 
-```csh
+```sh
 mvn dependency:copy-dependencies -DincludeScope=test
 ```
 
-上記を実行すると、プロジェクト配下の `target/dependency` に、テストスコープのものも含めて、 `*.jar` ファイルがダウンロードされます。
+上記を実行すると、プロジェクト配下の `target/dependency` に、テストスコープのものも含めて、 `*.jar` ファイルがダウンロードされます。[^1]
+
+[^1]: 書いている時点のmavenバージョン 3.6.3
