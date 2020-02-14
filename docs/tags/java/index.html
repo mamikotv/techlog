@@ -58,6 +58,40 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
+      <a href="/techlog/posts/202002143_maven_copy_dependencies/">
+        <div class="h2 mt-1 mb-1">Mavenで依存関係あるライブラリをダウンロードしたいだけだった。</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2020-02-13</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
+mvn dependency:copy-dependencies -DincludeScope=test  上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。
+    <a class="muted-link" href="/techlog/posts/202002143_maven_copy_dependencies/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
       <a href="/techlog/posts/20200120_maven_cmd/">
         <div class="h2 mt-1 mb-1">Windowsのcmd.exeで、Mavenを使って新規プロジェクトを作る時、複数行に分けて書きたかっただけだった。</div>
       </a>
@@ -118,7 +152,7 @@ mvn archetype:generate ^ -DarchetypeArtifactId=maven-archetype-quickstart ^ -Din
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/java" class="link-gray text-emphasized css-truncate-target"><span class="">Java</span></a>
-      <span class="text-right Counter">1</span>
+      <span class="text-right Counter">2</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">
