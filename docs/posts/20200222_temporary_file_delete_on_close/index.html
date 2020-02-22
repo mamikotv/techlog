@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Java NIO2 で一時ファイルを作成、処理後に削除 &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外最スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Java NIO2 で一時ファイルを作成、処理後に削除</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-02-22. Published at: 2020-02-22.">
+        
+          Published: 2020-02-22
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <pre><code class="language-java">  public void doSomething() {
+    try {
+      Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;);
+      try (Writer writer = Files.newBufferedWriter(tempFilePath)) {
+        // do something.
+        // 終わった後に一時ファイルを削除したい
+      }
+    } catch (IOException e) {
+      // ログとか出したり、または、別の例外最スロー
+    }
+  }
+</code></pre>
+
+<p>上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+
+<hr />
+
+<pre><code class="language-java">  public static Closeable deleteOnClose(final Path tempFilePath) {
+    return new Closeable() {
+      @Override
+      public void close() throws IOException {
+        Files.deleteIfExists(tempFilePath);
+      }
+    };
+  }
+
+  public void doSomething() {
+    try {
+      Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;);
+      try (Closeable closeable = deleteOnClose(tempFilePath);
+          Writer writer = Files.newBufferedWriter(tempFilePath)) {
+        // do something.
+      }
+    } catch (IOException e) {
+      // ...
+    }
+  }
+</code></pre>
+
+<p>以前やったのは、 <code>Closeable</code> の匿名クラス作って返すようなメソッドを一つ用意しておいて、 &ldquo;try-with-resources&rdquo; 構文の中で開放させる、というもの。 &ldquo;try-with-resources&rdquo; では、 <code>try</code> のカッコ内の最後の方からクローズしていくので、 <code>Closeable</code> を返すメソッドは一番最初に書くのが、注意するポイントでしょうか。</p>
+
+<p><code>Closeable</code> の実装は自分でやることになるので、 Java SE 7 以前の <code>java.io.File.createTempFile</code> メソッドで作った一時ファイル等にも、対応できるのが良いところですね。</p>
+
+<hr />
+
+<pre><code class="language-java">  public void doSomething() {
+    try {
+      Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.temp&quot;);
+      try (Writer writer = Files.newBufferedWriter(tempFilePath, StandardOpenOption.DELETE_ON_CLOSE)) {
+        // do something.
+      }
+    } catch (IOException e) {
+      // ...
+    }
+  }
+</code></pre>
+
+<p>Java NIO2 以降だと、ファイルを <code>newBufferedWriter</code> メソッドで開く時に、オプションで <code>DELETE_ON_CLOSE</code> <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> を付けると、処理終了後に、そのファイルは削除されるのですね。</p>
+
+<p>もとねた</p>
+
+<ul>
+<li><a href="https://www.jpcert.or.jp/java-rules/fio03-j.html" title="FIO03-J. 一時ファイルはプログラムの終了前に削除する">FIO03-J. 一時ファイルはプログラムの終了前に削除する</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Java NIO2 なので、 Java SE 7 以降の話です。 <a href="https://docs.oracle.com/cd/E26537_01/tutorial/essential/io/fileio.html">ファイルI/O（NIO.2を含む）（Java チュートリアル &gt; 重要なクラス &gt; 基本的なI/O）</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="https://docs.oracle.com/javase/jp/8/docs/api/java/nio/file/StandardOpenOption.html#DELETE_ON_CLOSE">https://docs.oracle.com/javase/jp/8/docs/api/java/nio/file/StandardOpenOption.html#DELETE_ON_CLOSE</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Java NIO2 で一時ファイルを作成、処理後に削除</b></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>

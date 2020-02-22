@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</loc>
+    <lastmod>2020-02-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://halflite.github.io/techlog/posts/20200214_maven_copy_dependencies/</loc>
     <lastmod>2020-02-13T00:00:00+09:00</lastmod>
   </url>
@@ -52,7 +57,7 @@
   
   <url>
     <loc>https://halflite.github.io/techlog/posts/</loc>
-    <lastmod>2020-02-13T00:00:00+09:00</lastmod>
+    <lastmod>2020-02-22T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -64,7 +69,7 @@
   
   <url>
     <loc>https://halflite.github.io/techlog/</loc>
-    <lastmod>2020-02-13T00:00:00+09:00</lastmod>
+    <lastmod>2020-02-22T00:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
