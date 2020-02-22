@@ -13,7 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外最スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+    <meta name="description" property="og:description" content="public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
 public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.|">
     
 
@@ -82,7 +82,7 @@ public static Closeable deleteOnClose(final Path tempFilePath) { return new Clos
         // 終わった後に一時ファイルを削除したい
       }
     } catch (IOException e) {
-      // ログとか出したり、または、別の例外最スロー
+      // ログとか出したり、または、別の例外再スロー
     }
   }
 </code></pre>

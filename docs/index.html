@@ -62,7 +62,7 @@
       <small>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</small>
       2020-02-22
     </div>
-    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外最スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
 public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.
   </div>
   
