@@ -6,10 +6,20 @@
     <description>Recent content in Java on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://halflite.github.io/techlog/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java NIO2 で一時ファイルを作成、処理後に削除</title>
+      <link>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</link>
+      <pubDate>Sat, 22 Feb 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</guid>
+      <description>public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.</description>
+    </item>
     
     <item>
       <title>Mavenで依存関係あるライブラリをダウンロードしたいだけだった。</title>

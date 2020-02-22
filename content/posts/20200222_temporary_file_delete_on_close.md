@@ -2,6 +2,8 @@
 title: "Java NIO2 で一時ファイルを作成、処理後に削除"
 date: 2020-02-22T00:00:00+09:00
 draft: false
+tags:
+  - java
 ---
 ```java
   public void doSomething() {
