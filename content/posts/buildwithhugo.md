@@ -32,7 +32,7 @@ hugo server
 記事書き出し
 
 ```sh
-hugo =D
+hugo -D
 ```
 
 ___
