@@ -13,3 +13,7 @@ tags:
 
 * [ひとり開発日記。 - プログラマの秘密のあれこれ](http://program.g.hatena.ne.jp/halflite/ "ひとり開発日記。 - プログラマの秘密のあれこれ")
     * [web.archive.org](https://web.archive.org/web/20191225152644/http://program.g.hatena.ne.jp/halflite/ "ひとり開発日記。 - プログラマの秘密のあれこれ")
+
+このブログの連絡先は、こちら。
+
+* [about me](https://halflite.net/aboutme/ "about me")
