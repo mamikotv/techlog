@@ -15,6 +15,28 @@ tags:
 
 ___
 
+毎度忘れてしまうので、hugoの操作メモ
+
+新規記事作成
+
+```sh
+hugo new posts/article.md
+```
+
+ローカルサーバーで確認
+
+```sh
+hugo server
+```
+
+記事書き出し
+
+```sh
+hugo =D
+```
+
+___
+
 以下、参考にした記事
 
 * [Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita](https://qiita.com/yotsak83/items/017734d5f873f4f194d4 "Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita")
