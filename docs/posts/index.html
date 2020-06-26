@@ -2,8 +2,6 @@
 <html>
   <head>
     
-    
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -58,6 +56,44 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
+      <a href="/techlog/posts/20200625_java_based_batch/">
+        <div class="h2 mt-1 mb-1">2020年 Javaベースのバッチを作るなら</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2020-06-25</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    前々回位の現場で、Javaベースのバッチ処理を作ることがあって。 「オンプレ環境で、そこまで厳格な条件ではないけど、ある程度安定して動いて欲しい」 「DBに接続して、データを取得後加工、CSVに出力して、それをメールに添付して送付」 位の要件でしたね。1
+そこでは、アーキテクチャを選択できる立場になかったので、以前からあるバッチの仕組みを、ちょろっといじってサーバに置いたんですが。2 でも、今、自分が作るとしたら、どんな仕組みにするかなぁ、って、ちょっと考えてみました。
+ ある程度ポータブルなものにしたいよね  オンプレとは言え、不定期にサーバーの統廃合があったりする サーバーの統廃合時に、cronタブの設定忘れたり サーバーごとに 秘伝のタレ の設定/シェルがあったり   ある程度複雑なロジックを伴うから、TDDとかやりたいよね  ちょっとした変更だって、やっぱり確認しながらやりたい   デプロイ時に漏れとか防ぎたいよね ソース管理理もGitとかのVCSでやりたいよね  たまーに機能追加しようとすると、もういない担当者のPCの中にしかソースが…    …あれ? 結構条件ありますね。
+今、自分で作るとするなら、こんな感じかな
+ ある程度枯れた、よく使われる軽量ライブラリの組合せで作る  GraalVMとか、まだ人類には早すぎるのでは… Jdbi のような軽量OR/M   変数を、環境変数や実行時変数から注入できる仕組みを組み込む  VCSで管理する以上、DB接続情報、メールサーバー接続情報等々をコミットするのは、アンチパターンでしょう Typesafe Config MicroProfile Configuration   ビジネスロジックをTDDで作るために、モックとか差し替えしたい  軽量DIコンテナを採用する Dagger   Maven/Gradleで、依存関係やバージョン情報を明示 実行可能なFatJarを作成して java --jar batch.jar だけで実行可能 実行は、cronではなく、バッチ実行の仕組みを別に用意する  Rundeck   そんなに頻繁な更新でなくとも、CI/CDの仕組みに乗せる  意外とやらないといけないこと多いですわ。
+ 参考 Serverless時代のJavaについて    あるある案件 &#x21a9;&#xfe0e;
+    <a class="muted-link" href="/techlog/posts/20200625_java_based_batch/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
       <a href="/techlog/posts/20200222_temporary_file_delete_on_close/">
         <div class="h2 mt-1 mb-1">Java NIO2 で一時ファイルを作成、処理後に削除</div>
       </a>
@@ -80,8 +116,8 @@
   </div>
   <div class="text-gray">
     
-    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
-public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&quot;id&quot;, &quot;.tmp&quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.
+    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something.  // 終わった後に一時ファイルを削除したい  } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー  } } 上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+ public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.
     <a class="muted-link" href="/techlog/posts/20200222_temporary_file_delete_on_close/">…</a>
   </div>
 </div>
@@ -115,8 +151,9 @@ public static Closeable deleteOnClose(final Path tempFilePath) { return new Clos
   <div class="text-gray">
     
     また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
-mvn dependency:copy-dependencies -DincludeScope=test  上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
- 書いている時点のmavenバージョン 3.6.3 [return]   
+mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
+  書いている時点のmavenバージョン 3.6.3 &#x21a9;&#xfe0e;
+   
     <a class="muted-link" href="/techlog/posts/20200214_maven_copy_dependencies/">…</a>
   </div>
 </div>
@@ -185,9 +222,9 @@ mvn archetype:generate ^ -DarchetypeArtifactId=maven-archetype-quickstart ^ -Din
   </div>
   <div class="text-gray">
     
-     CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+     CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
 結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates 
     <a class="muted-link" href="/techlog/posts/20200117_git_ver/">…</a>
   </div>
 </div>
@@ -222,8 +259,8 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
     
     一瞬、LivedoorBlogで作った時期もあるんですけど、やっぱり技術ブログなので…。
  Markdownで書きたい シンタックスハイライトが欲しい ブログパーツとかいらない  やはり、上記3条件は必須ですかねぇ。
-以下、参考にした記事
- Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます   
+ 以下、参考にした記事
+ Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます    
     <a class="muted-link" href="/techlog/posts/buildwithhugo/">…</a>
   </div>
 </div>
@@ -258,7 +295,7 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
     
      はてなグループの終了日を2020年1月31日(金)に決定しました - はてなグループ日記 - 機能変更、お知らせなど  …ということなので、技術ブログも、お引越しです。
 旧ブログは、こちら。
- ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org   
+ ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org    
     <a class="muted-link" href="/techlog/posts/helloworld/">…</a>
   </div>
 </div>
@@ -293,7 +330,7 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/java" class="link-gray text-emphasized css-truncate-target"><span class="">Java</span></a>
-      <span class="text-right Counter">3</span>
+      <span class="text-right Counter">4</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">

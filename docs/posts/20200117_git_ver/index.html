@@ -2,8 +2,6 @@
 <html>
   <head>
     
-    
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -13,9 +11,9 @@
     </title>
     
     
-    <meta name="description" property="og:description" content=" CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+    <meta name="description" property="og:description" content=" CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
 結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  |">
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates |">
     
 
     <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
@@ -86,22 +84,16 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
 <li>しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール…</li>
 <li>え&hellip;??? 依存ライブラリが無いの…???</li>
 </ol>
-
 <pre><code>sudo yum -y remove git
 sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 sudo yum -y install git --enablerepo=ius --disablerepo=base
-</code></pre>
-
-<p>上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!</p>
-
+</code></pre><p>上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!</p>
 <p>結局、こうなりますわ。</p>
-
 <pre><code>sudo yum -y remove git
 sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error
 sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates
 </code></pre>
-
   </section>
 
   <section>
@@ -118,7 +110,7 @@ sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates
           
   
     <div id="toc" class="Box Box--blue mb-3">
-      <b>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</b></div>
+      <b>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</b><nav id="TableOfContents"></nav></div>
   
 
   

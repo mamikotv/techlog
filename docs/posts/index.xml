@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on ひとり開発日記。</title>
@@ -6,10 +6,24 @@
     <description>Recent content in Posts on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 22 Feb 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2020 12:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://halflite.github.io/techlog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2020年 Javaベースのバッチを作るなら</title>
+      <link>https://halflite.github.io/techlog/posts/20200625_java_based_batch/</link>
+      <pubDate>Thu, 25 Jun 2020 12:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20200625_java_based_batch/</guid>
+      <description>前々回位の現場で、Javaベースのバッチ処理を作ることがあって。 「オンプレ環境で、そこまで厳格な条件ではないけど、ある程度安定して動いて欲しい」 「DBに接続して、データを取得後加工、CSVに出力して、それをメールに添付して送付」 位の要件でしたね。1
+そこでは、アーキテクチャを選択できる立場になかったので、以前からあるバッチの仕組みを、ちょろっといじってサーバに置いたんですが。2 でも、今、自分が作るとしたら、どんな仕組みにするかなぁ、って、ちょっと考えてみました。
+ ある程度ポータブルなものにしたいよね  オンプレとは言え、不定期にサーバーの統廃合があったりする サーバーの統廃合時に、cronタブの設定忘れたり サーバーごとに 秘伝のタレ の設定/シェルがあったり   ある程度複雑なロジックを伴うから、TDDとかやりたいよね  ちょっとした変更だって、やっぱり確認しながらやりたい   デプロイ時に漏れとか防ぎたいよね ソース管理理もGitとかのVCSでやりたいよね  たまーに機能追加しようとすると、もういない担当者のPCの中にしかソースが…    …あれ? 結構条件ありますね。
+今、自分で作るとするなら、こんな感じかな
+ ある程度枯れた、よく使われる軽量ライブラリの組合せで作る  GraalVMとか、まだ人類には早すぎるのでは… Jdbi のような軽量OR/M   変数を、環境変数や実行時変数から注入できる仕組みを組み込む  VCSで管理する以上、DB接続情報、メールサーバー接続情報等々をコミットするのは、アンチパターンでしょう Typesafe Config MicroProfile Configuration   ビジネスロジックをTDDで作るために、モックとか差し替えしたい  軽量DIコンテナを採用する Dagger   Maven/Gradleで、依存関係やバージョン情報を明示 実行可能なFatJarを作成して java --jar batch.jar だけで実行可能 実行は、cronではなく、バッチ実行の仕組みを別に用意する  Rundeck   そんなに頻繁な更新でなくとも、CI/CDの仕組みに乗せる  意外とやらないといけないこと多いですわ。
+ 参考 Serverless時代のJavaについて    あるある案件 &amp;#x21a9;&amp;#xfe0e;</description>
+    </item>
     
     <item>
       <title>Java NIO2 で一時ファイルを作成、処理後に削除</title>
@@ -17,8 +31,8 @@
       <pubDate>Sat, 22 Feb 2020 00:00:00 +0900</pubDate>
       
       <guid>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</guid>
-      <description>public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something. // 終わった後に一時ファイルを削除したい } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー } }  上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
-public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;quot;id&amp;quot;, &amp;quot;.tmp&amp;quot;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.</description>
+      <description>public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;#34;id&amp;#34;, &amp;#34;.tmp&amp;#34;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something.  // 終わった後に一時ファイルを削除したい  } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー  } } 上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+ public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&amp;#34;id&amp;#34;, &amp;#34;.tmp&amp;#34;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.</description>
     </item>
     
     <item>
@@ -28,8 +42,9 @@ public static Closeable deleteOnClose(final Path tempFilePath) { return new Clos
       
       <guid>https://halflite.github.io/techlog/posts/20200214_maven_copy_dependencies/</guid>
       <description>また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
-mvn dependency:copy-dependencies -DincludeScope=test  上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
- 書いている時点のmavenバージョン 3.6.3 [return]   </description>
+mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
+  書いている時点のmavenバージョン 3.6.3 &amp;#x21a9;&amp;#xfe0e;
+   </description>
     </item>
     
     <item>
@@ -50,9 +65,9 @@ mvn archetype:generate ^ -DarchetypeArtifactId=maven-archetype-quickstart ^ -Din
       <pubDate>Fri, 17 Jan 2020 01:00:00 +0900</pubDate>
       
       <guid>https://halflite.github.io/techlog/posts/20200117_git_ver/</guid>
-      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
 結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  </description>
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates </description>
     </item>
     
     <item>
@@ -63,8 +78,8 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
       <guid>https://halflite.github.io/techlog/posts/buildwithhugo/</guid>
       <description>一瞬、LivedoorBlogで作った時期もあるんですけど、やっぱり技術ブログなので…。
  Markdownで書きたい シンタックスハイライトが欲しい ブログパーツとかいらない  やはり、上記3条件は必須ですかねぇ。
-以下、参考にした記事
- Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます   </description>
+ 以下、参考にした記事
+ Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます    </description>
     </item>
     
     <item>
@@ -75,7 +90,7 @@ sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-
       <guid>https://halflite.github.io/techlog/posts/helloworld/</guid>
       <description> はてなグループの終了日を2020年1月31日(金)に決定しました - はてなグループ日記 - 機能変更、お知らせなど  …ということなので、技術ブログも、お引越しです。
 旧ブログは、こちら。
- ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org   </description>
+ ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org    </description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on ひとり開発日記。</title>
+    <title>linux on ひとり開発日記。</title>
     <link>https://halflite.github.io/techlog/tags/linux/</link>
-    <description>Recent content in Linux on ひとり開発日記。</description>
+    <description>Recent content in linux on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Fri, 17 Jan 2020 01:00:00 +0900</lastBuildDate>
@@ -17,9 +17,9 @@
       <pubDate>Fri, 17 Jan 2020 01:00:00 +0900</pubDate>
       
       <guid>https://halflite.github.io/techlog/posts/20200117_git_ver/</guid>
-      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base  上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
 結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates  </description>
+sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates </description>
     </item>
     
   </channel>
