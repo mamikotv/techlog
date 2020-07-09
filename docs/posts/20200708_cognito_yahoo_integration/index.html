@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  2020年7月 Amazon Cognito経由でYahoo!Japanのユーザ認証をやりたかっただけだった。 &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="TL;DR  できません
+  Amazon Cognitoの外部フェデレーテッドIDプロバイダとして、Yahoo!Japanを登録できますが、認証が通りません。 stateプロパティの値が長過ぎて、Yahoo!Japanからエラーで返ってきます。
+   Amazon Cognito とは - Amazon Cognito  AWSって、以前、S3をちょっと触ったレベルだったので、全く浦島太郎状態だったんですね。 最新技術のキャッチアップを兼ねて、ちょっと小さいプロジェクトで試すかな。 それなら、初っ端に必要になるログインとか認証である、Amazon Cognitoから触ってみるか～、って触ってみたんです。
+「…なるほど!! 全く分からん!!」
+ [Amazon Cognito] Facebook / Google / Amazon だけじゃない！独自の認証システムも利用可能になりました！ | Developers.IO 【サーバーレスなユーザ管理基盤】Amazon Cognito ユーザープールにOpenID Connectを使ってLINEアカウントを連携させてみる | Developers.IO AWS CognitoにGoogleとYahooとLINEアカウントを連携させる - Qiita  上記記事を参考に、ちまちまいじっていて、なんとなく分かった!! 「Amazon Cognitoってアカウント管理してくれて、外部プロバイダとの連携とも整合をとってくれて、一意なIDを払い出してくれる。」 「Amazon Cognitoそれ自体は、OpenID Connect/OAuth2のプロバイダとして振る舞ってくれる」 なんですね!!
+上記記事を参考に、試しにYahoo!JapanとのID連携やってみるかー、って思って、IDプロバイダの設定までは、サクサクできたんです。
+でも、実際のログイン画面が出てきて、クリックすると、コールバックにエラーが返ってきます。 &amp;ldquo;state is too long value&amp;rdquo; って何???
+Chromeのdev-toolで、リクエストとかを見ていると、確かにAmazon Cognitoが生成するstateって、1,200文字程度あります。 自分では、どっちが妥当か判断できないし、しゃーないので、Yahoo!デベロッパーネットワークのお問合せフォームから、質問投げちゃいましたよ…。
+結局「stateの長さは1024文字までの仕様となっており、長さを伸ばすことができません。(大意)」という回答でしたね。
+よくあるOpenID Connect/OAuth2のクライアントライブラリは、そこまで長いstateを生成しないのでしょう。 ですが、全世界で広く使われているAWSだと、そうもいかないのでしょうね…。
+久々、Yak Shavingで不毛な時間を過ごしちゃったよなー、でも、これやらないとダメなのが、我々の人生だよなー、と言う感想でしたね。|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">2020年7月 Amazon Cognito経由でYahoo!Japanのユーザ認証をやりたかっただけだった。</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+<a href='/techlog/tags/aws' class="muted-link">
+  <span class="Label Label--gray">aws</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-07-08. Published at: 2020-07-08.">
+        
+          Published: 2020-07-08
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <h3 id="tldr">TL;DR</h3>
+<blockquote>
+<p><strong>できません</strong></p>
+</blockquote>
+<blockquote>
+<p>Amazon Cognitoの外部フェデレーテッドIDプロバイダとして、Yahoo!Japanを登録できますが、認証が通りません。
+stateプロパティの値が長過ぎて、Yahoo!Japanからエラーで返ってきます。</p>
+</blockquote>
+<hr>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/what-is-amazon-cognito.html" title="Amazon Cognito とは - Amazon Cognito">Amazon Cognito とは - Amazon Cognito</a></li>
+</ul>
+<p>AWSって、以前、S3をちょっと触ったレベルだったので、全く浦島太郎状態だったんですね。 最新技術のキャッチアップを兼ねて、ちょっと小さいプロジェクトで試すかな。 それなら、初っ端に必要になるログインとか認証である、Amazon Cognitoから触ってみるか～、って触ってみたんです。</p>
+<p>「…なるほど!! 全く分からん!!」</p>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/amazon-cognito-developer-authenticated-identities/" title="[Amazon Cognito] Facebook / Google / Amazon だけじゃない！独自の認証システムも利用可能になりました！ | Developers.IO">[Amazon Cognito] Facebook / Google / Amazon だけじゃない！独自の認証システムも利用可能になりました！ | Developers.IO</a></li>
+<li><a href="https://dev.classmethod.jp/articles/cognito-userpool-openid-connect-line/" title="【サーバーレスなユーザ管理基盤】Amazon Cognito ユーザープールにOpenID Connectを使ってLINEアカウントを連携させてみる | Developers.IO">【サーバーレスなユーザ管理基盤】Amazon Cognito ユーザープールにOpenID Connectを使ってLINEアカウントを連携させてみる | Developers.IO</a></li>
+<li><a href="https://qiita.com/poruruba/items/189945dc64edfe1f2464" title="AWS CognitoにGoogleとYahooとLINEアカウントを連携させる - Qiita">AWS CognitoにGoogleとYahooとLINEアカウントを連携させる - Qiita</a></li>
+</ul>
+<p>上記記事を参考に、ちまちまいじっていて、なんとなく分かった!! <strong>「Amazon Cognitoってアカウント管理してくれて、外部プロバイダとの連携とも整合をとってくれて、一意なIDを払い出してくれる。」</strong> <strong>「Amazon Cognitoそれ自体は、OpenID Connect/OAuth2のプロバイダとして振る舞ってくれる」</strong> なんですね!!</p>
+<p>上記記事を参考に、試しにYahoo!JapanとのID連携やってみるかー、って思って、IDプロバイダの設定までは、サクサクできたんです。</p>
+<p>でも、実際のログイン画面が出てきて、クリックすると、コールバックにエラーが返ってきます。 <strong>&ldquo;state is too long value&rdquo;</strong> って何???</p>
+<p>Chromeのdev-toolで、リクエストとかを見ていると、確かにAmazon Cognitoが生成する<a href="https://www.buildinsider.net/enterprise/openid/oauth20" title="OAuth 2.0の代表的な利用パターンを仕様から理解しよう - Build Insider">state</a>って、1,200文字程度あります。 自分では、どっちが妥当か判断できないし、しゃーないので、Yahoo!デベロッパーネットワークのお問合せフォームから、質問投げちゃいましたよ…。</p>
+<p>結局「stateの長さは1024文字までの仕様となっており、長さを伸ばすことができません。(大意)」という回答でしたね。</p>
+<p>よくあるOpenID Connect/OAuth2のクライアントライブラリは、そこまで長いstateを生成しないのでしょう。 ですが、全世界で広く使われているAWSだと、そうもいかないのでしょうね…。</p>
+<p>久々、<a href="http://0xcc.net/blog/archives/000196.html" title="yak shaving で人生の問題の80%が説明できる問題 - bkブログ">Yak Shaving</a>で不毛な時間を過ごしちゃったよなー、でも、これやらないとダメなのが、我々の人生だよなー、と言う感想でしたね。</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>2020年7月 Amazon Cognito経由でYahoo!Japanのユーザ認証をやりたかっただけだった。</b><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tldr">TL;DR</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
