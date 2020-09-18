@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on ひとり開発日記。</title>
-    <link>https://halflite.github.io/techlog/tags/linux/</link>
-    <description>Recent content in linux on ひとり開発日記。</description>
+    <title>vagrant on ひとり開発日記。</title>
+    <link>https://halflite.github.io/techlog/tags/vagrant/</link>
+    <description>Recent content in vagrant on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0900</lastBuildDate>
     
-	<atom:link href="https://halflite.github.io/techlog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://halflite.github.io/techlog/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,17 +23,6 @@ MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って
  https://github.com/halflite/postgresql-win-local  こう言う環境を一つ作っておくと、 docker-compose.yml をいじるだけで、 MySQL だったり Redis だったりを簡単に(??)立てられるので、まぁ、ありがたいですねー…。
   ClearDB MySQL - Add-ons - Heroku Elements &amp;#x21a9;&amp;#xfe0e;
    </description>
-    </item>
-    
-    <item>
-      <title>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</title>
-      <link>https://halflite.github.io/techlog/posts/20200117_git_ver/</link>
-      <pubDate>Fri, 17 Jan 2020 01:00:00 +0900</pubDate>
-      
-      <guid>https://halflite.github.io/techlog/posts/20200117_git_ver/</guid>
-      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
-結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates </description>
     </item>
     
   </channel>

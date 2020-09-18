@@ -6,10 +6,24 @@
     <description>Recent content on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 28 Jul 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://halflite.github.io/techlog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2020年9月、ローカル環境に Postgres 12 を立てたいだけだった。</title>
+      <link>https://halflite.github.io/techlog/posts/20200918_postgres_local/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20200918_postgres_local/</guid>
+      <description>Heroku で、小さいアプリケーションを作りたいと思っていて。
+MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って Postgres でしょう。 今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。
+という事で、 Vagrant / VirtualBox 上に CentOS7 のインスタンスを作り、それに Ansible で Docker / Docker-Compose をインストール。 その上で、 Docker-Compose を使って、 Postgres を立てる、と言うスクリプトを書いてみました。
+ https://github.com/halflite/postgresql-win-local  こう言う環境を一つ作っておくと、 docker-compose.yml をいじるだけで、 MySQL だったり Redis だったりを簡単に(??)立てられるので、まぁ、ありがたいですねー…。
+  ClearDB MySQL - Add-ons - Heroku Elements &amp;#x21a9;&amp;#xfe0e;
+   </description>
+    </item>
     
     <item>
       <title>2020年7月 EclipseにPropertiesEditorプラグインをインストールしたいだけだった。</title>

@@ -54,6 +54,22 @@
   
   <div>
     <div>
+      <a href="/techlog/posts/20200918_postgres_local/">
+        <h3>2020年9月、ローカル環境に Postgres 12 を立てたいだけだった。</h3>
+      </a>
+      <small>https://halflite.github.io/techlog/posts/20200918_postgres_local/</small>
+      2020-09-18
+    </div>
+    Heroku で、小さいアプリケーションを作りたいと思っていて。
+MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って Postgres でしょう。 今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。
+という事で、 Vagrant / VirtualBox 上に CentOS7 のインスタンスを作り、それに Ansible で Docker / Docker-Compose をインストール。 その上で、 Docker-Compose を使って、 Postgres を立てる、と言うスクリプトを書いてみました。
+ https://github.com/halflite/postgresql-win-local  こう言う環境を一つ作っておくと、 docker-compose.yml をいじるだけで、 MySQL だったり Redis だったりを簡単に(??)立てられるので、まぁ、ありがたいですねー…。
+  ClearDB MySQL - Add-ons - Heroku Elements &#x21a9;&#xfe0e;
+   
+  </div>
+  
+  <div>
+    <div>
       <a href="/techlog/posts/20200728_eclipse_pe/">
         <h3>2020年7月 EclipseにPropertiesEditorプラグインをインストールしたいだけだった。</h3>
       </a>
@@ -194,21 +210,31 @@ hugo -D  以下、参考にした記事
  Hugo + GitHub Pages + 無料で洒落たブログを30分で作る - Qiita 【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】 - Qiita Hugoのテーマ「Theer」を作成しました – qqhann  すっきり見やすいHugoテーマ。 ありがたく使ってます    
   </div>
   
-  <div>
-    <div>
-      <a href="/techlog/posts/helloworld/">
-        <h3>Hello World.</h3>
-      </a>
-      <small>https://halflite.github.io/techlog/posts/helloworld/</small>
-      2019-12-26
-    </div>
-     はてなグループの終了日を2020年1月31日(金)に決定しました - はてなグループ日記 - 機能変更、お知らせなど  …ということなので、技術ブログも、お引越しです。
-旧ブログは、こちら。
- ひとり開発日記。 - プログラマの秘密のあれこれ  web.archive.org    このブログの連絡先は、こちら。
- about me  
-  </div>
-  
 
+  
+  <nav class="paginate-container">
+    <div class="pagination">
+      <ul>
+        
+        <span class="previous_page disabled">Prev</span>
+        
+
+        
+          <a href="/techlog/">
+            1
+          </a>
+        
+          <a href="/techlog/page/2/">
+            2
+          </a>
+        
+
+        
+        <a href="/techlog/page/2/" class="next_page">Next</a>
+        
+      </ul>
+    </div>
+  </nav>
   
 
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-  Categories &ndash; ひとり開発日記。
+  vagrant &ndash; ひとり開発日記。
 
     </title>
     
@@ -47,8 +47,50 @@
 
 <div>
 
-  <h1>Categories</h1>
+  <h1>vagrant</h1>
   
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/techlog/posts/20200918_postgres_local/">
+        <div class="h2 mt-1 mb-1">2020年9月、ローカル環境に Postgres 12 を立てたいだけだった。</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+<a href='/techlog/tags/vagrant' class="muted-link">
+  <span class="Label Label--gray">vagrant</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2020-09-18</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Heroku で、小さいアプリケーションを作りたいと思っていて。
+MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って Postgres でしょう。 今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。
+という事で、 Vagrant / VirtualBox 上に CentOS7 のインスタンスを作り、それに Ansible で Docker / Docker-Compose をインストール。 その上で、 Docker-Compose を使って、 Postgres を立てる、と言うスクリプトを書いてみました。
+ https://github.com/halflite/postgresql-win-local  こう言う環境を一つ作っておくと、 docker-compose.yml をいじるだけで、 MySQL だったり Redis だったりを簡単に(??)立てられるので、まぁ、ありがたいですねー…。
+  ClearDB MySQL - Add-ons - Heroku Elements &#x21a9;&#xfe0e;
+   
+    <a class="muted-link" href="/techlog/posts/20200918_postgres_local/">…</a>
+  </div>
+</div>
 
   
 
