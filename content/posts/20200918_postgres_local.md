@@ -9,7 +9,7 @@ tags:
 
 Heroku で、小さいアプリケーションを作りたいと思っていて。
 
-MySQL も出来ない訳じゃないんですけど[^1] まぁ、順当に言って Postgres でしょう。 今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。 
+MySQL も出来ない訳じゃないんですけど[^1] まぁ、順当に言って Postgres でしょう。 とは言え、今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。 
 
 という事で、 Vagrant / VirtualBox 上に CentOS7 のインスタンスを作り、それに Ansible で Docker / Docker-Compose をインストール。 その上で、 Docker-Compose を使って、 Postgres を立てる、と言うスクリプトを書いてみました。
 
