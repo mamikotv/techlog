@@ -6,10 +6,23 @@
     <description>Recent content in etc on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2020 01:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>imgbb.comのテスト</title>
+      <link>https://halflite.github.io/techlog/posts/20200831_imgbb/</link>
+      <pubDate>Mon, 31 Aug 2020 01:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20200831_imgbb/</guid>
+      <description>
+ ImgBB — フリーなスマイリー / アニメエモコン  たまにスクショとかを貼りたい時があって。 図解とか細かい記事だと、 Qiita や Zenn の方が良いんでしょうけど、ここは個人の日記サイトだしね…。
+という事で、適当にググって、適当にアップロードして、上記サイトを試してみることにしました。 1
+  まぁ、削除されても、そんなに重要な画像でもないし…。 &amp;#x21a9;&amp;#xfe0e;
+   </description>
+    </item>
     
     <item>
       <title>Hugo/GitHubPagesでブログ再作成</title>
