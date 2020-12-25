@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://halflite.github.io/techlog/posts/20201225_git_2/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://halflite.github.io/techlog/tags/linux/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://halflite.github.io/techlog/posts/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://halflite.github.io/techlog/tags/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://halflite.github.io/techlog/</loc>
+    <lastmod>2020-12-25T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://halflite.github.io/techlog/posts/20200918_postgres_local/</loc>
     <lastmod>2020-09-18T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://halflite.github.io/techlog/tags/linux/</loc>
-    <lastmod>2020-09-18T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://halflite.github.io/techlog/posts/</loc>
-    <lastmod>2020-09-18T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://halflite.github.io/techlog/tags/</loc>
-    <lastmod>2020-09-18T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://halflite.github.io/techlog/tags/vagrant/</loc>
-    <lastmod>2020-09-18T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://halflite.github.io/techlog/</loc>
     <lastmod>2020-09-18T00:00:00+09:00</lastmod>
   </url>
   

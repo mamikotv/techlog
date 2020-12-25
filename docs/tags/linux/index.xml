@@ -6,10 +6,17 @@
     <description>Recent content in linux on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://halflite.github.io/techlog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2020年12月 CentOS7にgit2.xをyumで入れたかっただけだった。</title>
+      <link>https://halflite.github.io/techlog/posts/20201225_git_2/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20201225_git_2/</guid>
+      <description>前回から、また変わったので。
+sudo yum -y remove git sudo yum -y install https://repo.ius.io/ius-release-el7.rpm sudo yum -y install git224 git --version  元ネタ
+ iusの最新リンクが変更になったので注意 - Qiita CentOS7にGit2系をyumでインストール - Qiita  </description>
+    </item>
     
     <item>
       <title>2020年9月 ローカル環境に Postgres 12 を立てたいだけだった。</title>
@@ -31,9 +38,9 @@ MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って
       <pubDate>Fri, 17 Jan 2020 01:00:00 +0900</pubDate>
       
       <guid>https://halflite.github.io/techlog/posts/20200117_git_ver/</guid>
-      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
+      <description> CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&amp;hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove gitsudo yum -y install https://centos7.iuscommunity.org/ius-release.rpmsudo yum -y install git --enablerepo=ius --disablerepo=base上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
 結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates </description>
+sudo yum -y remove gitsudo yum -y install https://centos7.iuscommunity.org/ius-release.rpmsudo yum -y install perl-TermReadKey emacs-filesystem perl-Errorsudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates</description>
     </item>
     
   </channel>

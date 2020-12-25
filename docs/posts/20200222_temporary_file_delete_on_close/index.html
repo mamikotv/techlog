@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/techlog/assets/syntax.css">
     <link rel="stylesheet" href="/techlog/assets/primer-build.css">
     <link rel="stylesheet" href="/techlog/assets/style.css">
+    <link rel="stylesheet" href="/techlog/assets/custom_style.css">
   </head>
 
 
@@ -76,10 +77,10 @@
 <article>
   
   <section class="pb-6 mb-3 border-bottom">
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.tmp&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.tmp&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
         <span style="color:#75715e">// do something.
 </span><span style="color:#75715e"></span>        <span style="color:#75715e">// 終わった後に一時ファイルを削除したい
 </span><span style="color:#75715e"></span>      <span style="color:#f92672">}</span>
@@ -90,19 +91,19 @@
 </code></pre></div><p>上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <hr>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Closeable <span style="color:#a6e22e">deleteOnClose</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> Path tempFilePath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Closeable<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Closeable<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
       <span style="color:#a6e22e">@Override</span>
-      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-        Files<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteIfExists</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        Files<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteIfExists</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">);</span>
       <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">};</span>
   <span style="color:#f92672">}</span>
 
-  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.tmp&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Closeable closeable <span style="color:#f92672">=</span> deleteOnClose<span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-          Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.tmp&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Closeable closeable <span style="color:#f92672">=</span> deleteOnClose<span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">);</span>
+          Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
         <span style="color:#75715e">// do something.
 </span><span style="color:#75715e"></span>      <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -112,10 +113,10 @@
 </code></pre></div><p>以前やったのは、 <code>Closeable</code> の匿名クラス作って返すようなメソッドを一つ用意しておいて、 &ldquo;try-with-resources&rdquo; 構文の中で開放させる、というもの。 &ldquo;try-with-resources&rdquo; では、 <code>try</code> のカッコ内の最後の方からクローズしていくので、 <code>Closeable</code> を返すメソッドは一番最初に書くのが、注意するポイントでしょうか。</p>
 <p><code>Closeable</code> の実装は自分でやることになるので、 Java SE 7 以前の <code>java.io.File.createTempFile</code> メソッドで作った一時ファイル等にも、対応できるのが良いところですね。</p>
 <hr>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doSomething</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.temp&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">,</span> StandardOpenOption<span style="color:#f92672">.</span><span style="color:#a6e22e">DELETE_ON_CLOSE</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      Path tempFilePath <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">createTempFile</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;.temp&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">try</span> <span style="color:#f92672">(</span>Writer writer <span style="color:#f92672">=</span> Files<span style="color:#f92672">.</span><span style="color:#a6e22e">newBufferedWriter</span><span style="color:#f92672">(</span>tempFilePath<span style="color:#f92672">,</span> StandardOpenOption<span style="color:#f92672">.</span><span style="color:#a6e22e">DELETE_ON_CLOSE</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
         <span style="color:#75715e">// do something.
 </span><span style="color:#75715e"></span>      <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>

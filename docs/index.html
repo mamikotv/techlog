@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.62.2" />
+	<meta name="generator" content="Hugo 0.79.1" />
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/techlog/assets/syntax.css">
     <link rel="stylesheet" href="/techlog/assets/primer-build.css">
     <link rel="stylesheet" href="/techlog/assets/style.css">
+    <link rel="stylesheet" href="/techlog/assets/custom_style.css">
   </head>
 
 
@@ -51,6 +52,19 @@
   <h1>ひとり開発日記。</h1>
   
 
+  
+  <div>
+    <div>
+      <a href="/techlog/posts/20201225_git_2/">
+        <h3>2020年12月 CentOS7にgit2.xをyumで入れたかっただけだった。</h3>
+      </a>
+      <small>https://halflite.github.io/techlog/posts/20201225_git_2/</small>
+      2020-12-25
+    </div>
+    前回から、また変わったので。
+sudo yum -y remove git sudo yum -y install https://repo.ius.io/ius-release-el7.rpm sudo yum -y install git224 git --version  元ネタ
+ iusの最新リンクが変更になったので注意 - Qiita CentOS7にGit2系をyumでインストール - Qiita  
+  </div>
   
   <div>
     <div>
@@ -150,7 +164,7 @@ Chromeのdev-toolで、リクエストとかを見ていると、確かにAmazon
     WindowsマシンでEclipse使っていると、いつの間にか、ソースの文字コードがMS932になっていて、イラッとしません？
 Eclipseの設定から直しても、プロジェクトのクラスパス修正しようと、mvnコマンドで.settingsファイルを初期化したら、文字コード設定が、元に戻ってしまったりして…。
 解決策としては、プロジェクトのpom.xmlを、以下のように記述/変更します。
-&lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;/properties&gt; &lt;build&gt; &lt;plugins&gt; &lt;!--Eclipse --&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt; &lt;version&gt;2.10&lt;/version&gt; &lt;configuration&gt; &lt;downloadSources&gt;true&lt;/downloadSources&gt; &lt;downloadJavadocs&gt;true&lt;/downloadJavadocs&gt; &lt;additionalConfig&gt; &lt;file&gt; &lt;name&gt;.settings/org.eclipse.core.resources.prefs&lt;/name&gt; &lt;content&gt; &lt;![CDATA[eclipse.preferences.version=1${line.separator}encoding/&lt;project&gt;=${project.build.sourceEncoding}${line.separator}]]&gt; &lt;/content&gt; &lt;/file&gt; &lt;/additionalConfig&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; で、Eclipse用の.settingsファイルを作り直すと、次からは、ソースコードの文字コードは、UTF-8になっています。
+&lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;/properties&gt; &lt;build&gt; &lt;plugins&gt; &lt;!-- Eclipse --&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt; &lt;version&gt;2.10&lt;/version&gt; &lt;configuration&gt; &lt;downloadSources&gt;true&lt;/downloadSources&gt; &lt;downloadJavadocs&gt;true&lt;/downloadJavadocs&gt; &lt;additionalConfig&gt; &lt;file&gt; &lt;name&gt;.settings/org.eclipse.core.resources.prefs&lt;/name&gt; &lt;content&gt; &lt;![CDATA[eclipse.preferences.version=1${line.separator}encoding/&lt;project&gt;=${project.build.sourceEncoding}${line.separator}]]&gt; &lt;/content&gt; &lt;/file&gt; &lt;/additionalConfig&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; で、Eclipse用の.settingsファイルを作り直すと、次からは、ソースコードの文字コードは、UTF-8になっています。
 mvn eclipse:clean eclipse:eclipse  元ネタ Define Eclipse project encoding as UTF-8 from Maven - Stack Overflow   旧blog 2018/10/12 の記事に加筆訂正して再掲しました。
   </div>
   
@@ -190,21 +204,8 @@ mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、
     </div>
     新しいライブラリやフレームワークを試す時、素振りも兼ねて、小さいJavaプロジェクトを作ってみるんですが、毎回Maven Archetypeの書き方を忘れて、自分のblogを読み返してしまったり。
 この度、blog移設なので、ここでも書き記しておく次第です。
-mvn archetype:generate ^ -DarchetypeArtifactId=maven-archetype-quickstart ^ -DinteractiveMode=false ^ -DgroupId=net.halflite ^ -DartifactId=testapp ^ -Dpackage=net.halflite.testapp  もとねた
+mvn archetype:generate ^-DarchetypeArtifactId=maven-archetype-quickstart ^-DinteractiveMode=false ^-DgroupId=net.halflite ^-DartifactId=testapp ^-Dpackage=net.halflite.testapp もとねた
  Maven Quickstart Archetype – Maven Quickstart Archetype cmdのバッチファイルで、1コマンドを複数行にわたって記述したい場合 - Qiita  
-  </div>
-  
-  <div>
-    <div>
-      <a href="/techlog/posts/20200117_git_ver/">
-        <h3>2020年1月、CentOS7にgit2.xをyumで入れたかっただけだった。</h3>
-      </a>
-      <small>https://halflite.github.io/techlog/posts/20200117_git_ver/</small>
-      2020-01-17
-    </div>
-     CentOS7環境で、gitのリポジトリからダウンロードして環境構築を一発で構築したいなぁ!!! Vagrant/VirtalBoxでテスト環境作ってやってみっかな!!! git --version って、まだ1.x系なの? しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール… え&hellip;??? 依存ライブラリが無いの…???  sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install git --enablerepo=ius --disablerepo=base 上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!
-結局、こうなりますわ。
-sudo yum -y remove git sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates 
   </div>
   
 

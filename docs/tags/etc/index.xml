@@ -6,11 +6,7 @@
     <description>Recent content in etc on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 31 Aug 2020 01:00:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 31 Aug 2020 01:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>imgbb.comのテスト</title>
       <link>https://halflite.github.io/techlog/posts/20200831_imgbb/</link>
