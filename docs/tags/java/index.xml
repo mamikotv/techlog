@@ -6,7 +6,27 @@
     <description>Recent content in java on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 28 Jul 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 May 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quarkusに入門してみた</title>
+      <link>https://halflite.github.io/techlog/posts/20210530_quarkus/</link>
+      <pubDate>Sun, 30 May 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20210530_quarkus/</guid>
+      <description>Quarkusに入門してみた  Quarkus - Creating Your First Application  Quarkus を、ちょろっと触っています。
+入門編として、「HTMLで入力フォームを作って、画像投稿掲示板を作る」までやってみたいかな、位のモチベーションですかね…。いや、まだ何も出来ていませんが…。
+最初に触った感想  とりあえず、簡単に出来るよな 色々揃っているよな、でも外れると何も出来ないよな Vert.x が鬼門かもしれないな  とりあえず、簡単に出来るよな とりあえず、mavenでプロジェクト作って、 Hello, World! とか、適当にJSONを出力するのとかは、Javaの基礎知識ある人なら、10分程度で出来るんですよ。
+mvn clean compile quarkus:dev で実行させた後、Eclipseとかでデバッグするには、ポート5005のリモート・デバッグを使えばいい、と。1
+色々揃っているよな、でも外れると何も出来ないよな 色々道具は揃っているんですが。 ただ、本当に限定的なんですよね…。 2
+プレゼンテーション層、(所謂)「HTMLテンプレート」は Qute Templating Engine があるんですが、マジでこれしかないの…？ Thymeleaf はおろか、 FreeMarker にも届かないんでは…。
+DBアクセスには、 Hibernate/JPA とか、そのラッパー Panache とかあるんですが、それ以外は…。
+まぁ、そもそも Quarkus の役割を考えると、「Backend for Frontendをそこまで作り込むな」と言う主張なのかもしれませんが…。
+Vert.x が鬼門かもしれないな Spring Boot って、結局、HttpServletの(適度に)厚いラッパーだったわけで、昔ながらのServletを知っていれば、何とか応用も効いたと思うんですが、 Vert.x  は、ホントよく分からんですねぇ。 JAX-RSの下がどうなっているか、きちんと調べないと分からん、と言う。
+でもね とは言え、新しい技術に触れると、ホントにワクワクしますわ。
+このフレームワークが、どう転ぶのかも分からないんですが、でも、これからのJava標準準拠であることを考えると、やっぱり避けて通れないんでしょうね。 3
+  Maven testをeclipseでデバッグ | infoScoop開発者ブログ https://bit.</description>
+    </item>
+    
     <item>
       <title>2020年7月 EclipseにPropertiesEditorプラグインをインストールしたいだけだった。</title>
       <link>https://halflite.github.io/techlog/posts/20200728_eclipse_pe/</link>

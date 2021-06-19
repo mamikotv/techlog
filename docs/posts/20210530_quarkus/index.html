@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Quarkusに入門してみた &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="Quarkusに入門してみた  Quarkus - Creating Your First Application  Quarkus を、ちょろっと触っています。
+入門編として、「HTMLで入力フォームを作って、画像投稿掲示板を作る」までやってみたいかな、位のモチベーションですかね…。いや、まだ何も出来ていませんが…。
+最初に触った感想  とりあえず、簡単に出来るよな 色々揃っているよな、でも外れると何も出来ないよな Vert.x が鬼門かもしれないな  とりあえず、簡単に出来るよな とりあえず、mavenでプロジェクト作って、 Hello, World! とか、適当にJSONを出力するのとかは、Javaの基礎知識ある人なら、10分程度で出来るんですよ。
+mvn clean compile quarkus:dev で実行させた後、Eclipseとかでデバッグするには、ポート5005のリモート・デバッグを使えばいい、と。1
+色々揃っているよな、でも外れると何も出来ないよな 色々道具は揃っているんですが。 ただ、本当に限定的なんですよね…。 2
+プレゼンテーション層、(所謂)「HTMLテンプレート」は Qute Templating Engine があるんですが、マジでこれしかないの…？ Thymeleaf はおろか、 FreeMarker にも届かないんでは…。
+DBアクセスには、 Hibernate/JPA とか、そのラッパー Panache とかあるんですが、それ以外は…。
+まぁ、そもそも Quarkus の役割を考えると、「Backend for Frontendをそこまで作り込むな」と言う主張なのかもしれませんが…。
+Vert.x が鬼門かもしれないな Spring Boot って、結局、HttpServletの(適度に)厚いラッパーだったわけで、昔ながらのServletを知っていれば、何とか応用も効いたと思うんですが、 Vert.x  は、ホントよく分からんですねぇ。 JAX-RSの下がどうなっているか、きちんと調べないと分からん、と言う。
+でもね とは言え、新しい技術に触れると、ホントにワクワクしますわ。
+このフレームワークが、どう転ぶのかも分からないんですが、でも、これからのJava標準準拠であることを考えると、やっぱり避けて通れないんでしょうね。 3
+  Maven testをeclipseでデバッグ | infoScoop開発者ブログ https://bit.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+    <link rel="stylesheet" href="/techlog/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Quarkusに入門してみた</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-05-30. Published at: 2021-05-30.">
+        
+          Published: 2021-05-30
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <h3 id="quarkusに入門してみた">Quarkusに入門してみた</h3>
+<ul>
+<li><a href="https://quarkus.io/guides/getting-started" title="Quarkus - Creating Your First Application">Quarkus - Creating Your First Application</a></li>
+</ul>
+<p><code>Quarkus</code> を、ちょろっと触っています。</p>
+<p>入門編として、「HTMLで入力フォームを作って、画像投稿掲示板を作る」までやってみたいかな、位のモチベーションですかね…。いや、まだ何も出来ていませんが…。</p>
+<h3 id="最初に触った感想">最初に触った感想</h3>
+<ul>
+<li>とりあえず、簡単に出来るよな</li>
+<li>色々揃っているよな、でも外れると何も出来ないよな</li>
+<li>Vert.x が鬼門かもしれないな</li>
+</ul>
+<h3 id="とりあえず簡単に出来るよな">とりあえず、簡単に出来るよな</h3>
+<p>とりあえず、mavenでプロジェクト作って、 <code>Hello, World!</code> とか、適当にJSONを出力するのとかは、Javaの基礎知識ある人なら、10分程度で出来るんですよ。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mvn clean compile quarkus:dev
+</code></pre></div><p>で実行させた後、Eclipseとかでデバッグするには、ポート5005のリモート・デバッグを使えばいい、と。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h3 id="色々揃っているよなでも外れると何も出来ないよな">色々揃っているよな、でも外れると何も出来ないよな</h3>
+<p>色々道具は揃っているんですが。 ただ、本当に限定的なんですよね…。 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>プレゼンテーション層、(所謂)「HTMLテンプレート」は <a href="https://quarkus.io/guides/qute" title="Quarkus - Qute Templating Engine">Qute Templating Engine</a> があるんですが、マジでこれしかないの…？ <code>Thymeleaf</code> はおろか、 <code>FreeMarker</code> にも届かないんでは…。</p>
+<p>DBアクセスには、 <a href="https://quarkus.io/guides/hibernate-orm" title="Quarkus - Using Hibernate ORM and JPA">Hibernate/JPA</a> とか、そのラッパー <a href="https://quarkus.io/guides/hibernate-orm-panache" title="Quarkus - Simplified Hibernate ORM with Panache">Panache</a> とかあるんですが、それ以外は…。</p>
+<p>まぁ、そもそも <code>Quarkus</code> の役割を考えると、「Backend for Frontendをそこまで作り込むな」と言う主張なのかもしれませんが…。</p>
+<h3 id="vertx-が鬼門かもしれないな">Vert.x が鬼門かもしれないな</h3>
+<p><a href="https://spring.pleiades.io/spring-boot/docs/current/reference/html/getting-started.html" title="Spring Boot 入門 - リファレンスドキュメント">Spring Boot</a> って、結局、HttpServletの(適度に)厚いラッパーだったわけで、昔ながらのServletを知っていれば、何とか応用も効いたと思うんですが、 <code>Vert.x </code> は、ホントよく分からんですねぇ。 JAX-RSの下がどうなっているか、きちんと調べないと分からん、と言う。</p>
+<h3 id="でもね">でもね</h3>
+<p>とは言え、新しい技術に触れると、ホントにワクワクしますわ。</p>
+<p>このフレームワークが、どう転ぶのかも分からないんですが、でも、これからのJava標準準拠であることを考えると、やっぱり避けて通れないんでしょうね。 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Maven testをeclipseでデバッグ | infoScoop開発者ブログ <a href="https://bit.ly/2TJzH6W">https://bit.ly/2TJzH6W</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Quarkus - Guides - Latest <a href="https://quarkus.io/guides/">https://quarkus.io/guides/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>MicroProfile 4.0への道 <a href="https://www.infoq.com/jp/news/2021/04/the-road-to-microprofile-4/">https://www.infoq.com/jp/news/2021/04/the-road-to-microprofile-4/</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Quarkusに入門してみた</b><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#quarkusに入門してみた">Quarkusに入門してみた</a></li>
+        <li><a href="#最初に触った感想">最初に触った感想</a></li>
+        <li><a href="#とりあえず簡単に出来るよな">とりあえず、簡単に出来るよな</a></li>
+        <li><a href="#色々揃っているよなでも外れると何も出来ないよな">色々揃っているよな、でも外れると何も出来ないよな</a></li>
+        <li><a href="#vertx-が鬼門かもしれないな">Vert.x が鬼門かもしれないな</a></li>
+        <li><a href="#でもね">でもね</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>

@@ -57,6 +57,50 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
+      <a href="/techlog/posts/20210530_quarkus/">
+        <div class="h2 mt-1 mb-1">Quarkusに入門してみた</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2021-05-30</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Quarkusに入門してみた  Quarkus - Creating Your First Application  Quarkus を、ちょろっと触っています。
+入門編として、「HTMLで入力フォームを作って、画像投稿掲示板を作る」までやってみたいかな、位のモチベーションですかね…。いや、まだ何も出来ていませんが…。
+最初に触った感想  とりあえず、簡単に出来るよな 色々揃っているよな、でも外れると何も出来ないよな Vert.x が鬼門かもしれないな  とりあえず、簡単に出来るよな とりあえず、mavenでプロジェクト作って、 Hello, World! とか、適当にJSONを出力するのとかは、Javaの基礎知識ある人なら、10分程度で出来るんですよ。
+mvn clean compile quarkus:dev で実行させた後、Eclipseとかでデバッグするには、ポート5005のリモート・デバッグを使えばいい、と。1
+色々揃っているよな、でも外れると何も出来ないよな 色々道具は揃っているんですが。 ただ、本当に限定的なんですよね…。 2
+プレゼンテーション層、(所謂)「HTMLテンプレート」は Qute Templating Engine があるんですが、マジでこれしかないの…？ Thymeleaf はおろか、 FreeMarker にも届かないんでは…。
+DBアクセスには、 Hibernate/JPA とか、そのラッパー Panache とかあるんですが、それ以外は…。
+まぁ、そもそも Quarkus の役割を考えると、「Backend for Frontendをそこまで作り込むな」と言う主張なのかもしれませんが…。
+Vert.x が鬼門かもしれないな Spring Boot って、結局、HttpServletの(適度に)厚いラッパーだったわけで、昔ながらのServletを知っていれば、何とか応用も効いたと思うんですが、 Vert.x  は、ホントよく分からんですねぇ。 JAX-RSの下がどうなっているか、きちんと調べないと分からん、と言う。
+でもね とは言え、新しい技術に触れると、ホントにワクワクしますわ。
+このフレームワークが、どう転ぶのかも分からないんですが、でも、これからのJava標準準拠であることを考えると、やっぱり避けて通れないんでしょうね。 3
+  Maven testをeclipseでデバッグ | infoScoop開発者ブログ https://bit.
+    <a class="muted-link" href="/techlog/posts/20210530_quarkus/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
       <a href="/techlog/posts/20201225_git_2/">
         <div class="h2 mt-1 mb-1">2020年12月 CentOS7にgit2.xをyumで入れたかっただけだった。</div>
       </a>
@@ -395,42 +439,6 @@ mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、
 </div>
 
   
-    
-    
-<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
-  <div class="Subhead mb-2">
-    <div class="Subhead-heading">
-      <a href="/techlog/posts/20200120_maven_cmd/">
-        <div class="h2 mt-1 mb-1">Windowsのcmd.exeで、Mavenを使って新規プロジェクトを作る時、複数行に分けて書きたかっただけだった。</div>
-      </a>
-    </div>
-    <div class="Subhead-description">
-      
-
-
-
-
-<a href='/techlog/tags/java' class="muted-link">
-  <span class="Label Label--gray">java</span>
-</a>
-
-
-      <div class="float-md-right">
-        <span>2020-01-20</span>
-      </div>
-    </div>
-  </div>
-  <div class="text-gray">
-    
-    新しいライブラリやフレームワークを試す時、素振りも兼ねて、小さいJavaプロジェクトを作ってみるんですが、毎回Maven Archetypeの書き方を忘れて、自分のblogを読み返してしまったり。
-この度、blog移設なので、ここでも書き記しておく次第です。
-mvn archetype:generate ^-DarchetypeArtifactId=maven-archetype-quickstart ^-DinteractiveMode=false ^-DgroupId=net.halflite ^-DartifactId=testapp ^-Dpackage=net.halflite.testapp もとねた
- Maven Quickstart Archetype – Maven Quickstart Archetype cmdのバッチファイルで、1コマンドを複数行にわたって記述したい場合 - Qiita  
-    <a class="muted-link" href="/techlog/posts/20200120_maven_cmd/">…</a>
-  </div>
-</div>
-
-  
 
   
   
@@ -508,7 +516,7 @@ mvn archetype:generate ^-DarchetypeArtifactId=maven-archetype-quickstart ^-Din
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/java" class="link-gray text-emphasized css-truncate-target"><span class="">Java</span></a>
-      <span class="text-right Counter">6</span>
+      <span class="text-right Counter">7</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">
