@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  2021年6月 Javaプログラミングで &#34;Hello World&#34; を出したいだけだった &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="Javaのプログラミングで、 &amp;ldquo;Hello World&amp;rdquo; を出したいと思うでしょう?
+まぁ、惰性で以下のことをするでしょう。
+ JDK(OracleとかOpenJDK)をインストール、パスを通す Mavenをインストール、パスを通す Eclipseをインストール、各種フォーマッターをインストール  今は、2021年6月です。 こう言うのは避けたいですよね。
+ JDK/JREのバージョンを切り替えるのが難しい  JDK/JREは後方互換を重視していたので、ちょっとしたことで対応が難しい 現在の Eclipse って、必要なJDK/JREって、15ですよね Java 11/15で後方互換が切り捨てられたのもあるので、対応はそれなりに必要でしょう [^1]   Windows10でJava開発環境整える  それだけで、一体、いくらのソフトをダウンロードするんです? JDK/Maven/Eclipse のインストールは、大体において鬼門だったりしますね 隣の席の人と、Eclipseのバージョン合ってます？ Mavenでも、変な対応が入ることがありますよ [^2]     まぁ、結局、以下の如しですわ。
+ まず世間のIT関連のPCはWindows10ベースなので、それを考える ローカル開発環境に、極力インストールさせない Gitからチェックアウトしたら、すぐ全員の環境と同じになる  ここら辺、あなたならどう考えるでしょうね?
+[^1]: JAXB対応 https://github.com/acroquest/javabook-support/issues/49[^2]: Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019 |">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+    <link rel="stylesheet" href="/techlog/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">2021年6月 Javaプログラミングで &#34;Hello World&#34; を出したいだけだった</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-06-27. Published at: 2021-06-27.">
+        
+          Published: 2021-06-27
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>Javaのプログラミングで、 &ldquo;Hello World&rdquo; を出したいと思うでしょう?</p>
+<p>まぁ、惰性で以下のことをするでしょう。</p>
+<ol>
+<li>JDK(OracleとかOpenJDK)をインストール、パスを通す</li>
+<li>Mavenをインストール、パスを通す</li>
+<li>Eclipseをインストール、各種フォーマッターをインストール</li>
+</ol>
+<p>今は、2021年6月です。 こう言うのは避けたいですよね。</p>
+<ul>
+<li>JDK/JREのバージョンを切り替えるのが難しい
+<ul>
+<li>JDK/JREは後方互換を重視していたので、ちょっとしたことで対応が難しい</li>
+<li>現在の Eclipse って、必要なJDK/JREって、15ですよね</li>
+<li>Java 11/15で後方互換が切り捨てられたのもあるので、対応はそれなりに必要でしょう  [^1]</li>
+</ul>
+</li>
+<li>Windows10でJava開発環境整える
+<ul>
+<li>それだけで、一体、いくらのソフトをダウンロードするんです?</li>
+<li>JDK/Maven/Eclipse のインストールは、大体において鬼門だったりしますね</li>
+<li>隣の席の人と、Eclipseのバージョン合ってます？</li>
+<li>Mavenでも、変な対応が入ることがありますよ [^2]</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>まぁ、結局、以下の如しですわ。</p>
+<ul>
+<li>まず世間のIT関連のPCはWindows10ベースなので、それを考える</li>
+<li>ローカル開発環境に、極力インストールさせない</li>
+<li>Gitからチェックアウトしたら、すぐ全員の環境と同じになる</li>
+</ul>
+<p>ここら辺、あなたならどう考えるでしょうね?</p>
+<pre><code>[^1]: JAXB対応 https://github.com/acroquest/javabook-support/issues/49
+[^2]: Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019</code></pre>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>2021年6月 Javaプログラミングで &#34;Hello World&#34; を出したいだけだった</b><nav id="TableOfContents"></nav></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>

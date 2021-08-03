@@ -2,8 +2,6 @@
 <html>
   <head>
     
-    
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -52,6 +50,44 @@
 
   <h1>java</h1>
   
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/techlog/posts/20210627_java_dev/">
+        <div class="h2 mt-1 mb-1">2021年6月 Javaプログラミングで &#34;Hello World&#34; を出したいだけだった</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2021-06-27</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Javaのプログラミングで、 &ldquo;Hello World&rdquo; を出したいと思うでしょう?
+まぁ、惰性で以下のことをするでしょう。
+ JDK(OracleとかOpenJDK)をインストール、パスを通す Mavenをインストール、パスを通す Eclipseをインストール、各種フォーマッターをインストール  今は、2021年6月です。 こう言うのは避けたいですよね。
+ JDK/JREのバージョンを切り替えるのが難しい  JDK/JREは後方互換を重視していたので、ちょっとしたことで対応が難しい 現在の Eclipse って、必要なJDK/JREって、15ですよね Java 11/15で後方互換が切り捨てられたのもあるので、対応はそれなりに必要でしょう [^1]   Windows10でJava開発環境整える  それだけで、一体、いくらのソフトをダウンロードするんです? JDK/Maven/Eclipse のインストールは、大体において鬼門だったりしますね 隣の席の人と、Eclipseのバージョン合ってます？ Mavenでも、変な対応が入ることがありますよ [^2]     まぁ、結局、以下の如しですわ。
+ まず世間のIT関連のPCはWindows10ベースなので、それを考える ローカル開発環境に、極力インストールさせない Gitからチェックアウトしたら、すぐ全員の環境と同じになる  ここら辺、あなたならどう考えるでしょうね?
+[^1]: JAXB対応 https://github.com/acroquest/javabook-support/issues/49[^2]: Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019 
+    <a class="muted-link" href="/techlog/posts/20210627_java_dev/">…</a>
+  </div>
+</div>
 
   
     
@@ -354,7 +390,7 @@ mvn archetype:generate ^-DarchetypeArtifactId=maven-archetype-quickstart ^-Din
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/java" class="link-gray text-emphasized css-truncate-target"><span class="">Java</span></a>
-      <span class="text-right Counter">7</span>
+      <span class="text-right Counter">8</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">
