@@ -6,7 +6,24 @@
     <description>Recent content in Posts on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています</title>
+      <link>https://halflite.github.io/techlog/posts/20211027_hugo_docker/</link>
+      <pubDate>Wed, 27 Oct 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20211027_hugo_docker/</guid>
+      <description>bitter*smooth と言う音楽レビューサイトを作っています。
+この環境、サーバーサイドはNetlify/Hugo、ローカルではVSCodeでMarkdownを書く、と言う環境で構築しているのですが、あれ？そもそもVSCodeを使うなら、WSL2/DockerDesktop/Remote-Containersでローカル確認もすれば良いんじゃない？と思って、やったらサクッと出来ました！
+   Windows Terminalインストール
+  WSL2インストール
+ Windows Terminal を管理者権限で起動    wsl --install wsl --set-default-version 2 wsl --install -d Ubuntu   VSCodeインストール
+  Windows に Docker Desktop をインストール
+   まぁ、ここら辺までは、Windows10で開発している人ならフツーに出来るんでないでしょうか？
+で、プロジェクトのトップで、 .devcontainer ディレクトリを作り、その配下に、 Dockerfile devcontainer.json の2つのファイルを作ります。
+ .devcontainer/Dockerfile 1  FROMklakegg/hugo:0.88.0-alpineRUN apk update &amp;amp;&amp;amp; apk --no-cache add git .devcontainer/devcontainer.json 2  { &amp;#34;name&amp;#34;: &amp;#34;bittersmooth&amp;#34;, &amp;#34;build&amp;#34;: { &amp;#34;dockerfile&amp;#34;: &amp;#34;Dockerfile&amp;#34;, }, &amp;#34;extensions&amp;#34;: [ &amp;#34;mhutchie.</description>
+    </item>
+    
     <item>
       <title>2021年6月 Javaプログラミングで &#34;Hello World&#34; を出したいだけだった</title>
       <link>https://halflite.github.io/techlog/posts/20210627_java_dev/</link>
@@ -18,8 +35,8 @@
  JDK(OracleとかOpenJDK)をインストール、パスを通す Mavenをインストール、パスを通す Eclipseをインストール、各種フォーマッターをインストール  今は、2021年6月です。 こう言うのは避けたいですよね。
  JDK/JREのバージョンを切り替えるのが難しい  JDK/JREは後方互換を重視していたので、ちょっとしたことで対応が難しい 現在の Eclipse って、必要なJDK/JREって、15ですよね Java 11/15で後方互換が切り捨てられたのもあるので、対応はそれなりに必要でしょう 1   Windows10でJava開発環境整える  それだけで、一体、いくらのソフトをダウンロードするんです? JDK/Maven/Eclipse のインストールは、大体において鬼門だったりしますね 隣の席の人と、Eclipseのバージョン合ってます？ Mavenでも、変な対応が入ることがありますよ 2     まぁ、結局、以下の如しですわ。
  まず世間のIT関連のPCはWindows10ベースなので、それを考える ローカル開発環境に、極力インストールさせない Gitからチェックアウトしたら、すぐ全員の環境と同じになる  ここら辺、あなたならどう考えるでしょうね?
-  JAXB対応 https://github.com/acroquest/javabook-support/issues/49 &amp;#x21a9;&amp;#xfe0e;
- Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019 &amp;#x21a9;&amp;#xfe0e;
+  JAXB対応 https://github.com/acroquest/javabook-support/issues/49&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+ Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     
@@ -64,7 +81,7 @@ sudo yum -y remove git sudo yum -y install https://repo.ius.io/ius-release-el7.r
 MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って Postgres でしょう。 とは言え、今の時代は、Windowsマシンに Postgres を直接インストールするのはアンチパターンですよね…。
 という事で、 Vagrant / VirtualBox 上に CentOS7 のインスタンスを作り、それに Ansible で Docker / Docker-Compose をインストール。 その上で、 Docker-Compose を使って、 Postgres を立てる、と言うスクリプトを書いてみました。
  https://github.com/halflite/postgresql-win-local  こう言う環境を一つ作っておくと、 docker-compose.yml をいじるだけで、 MySQL だったり Redis だったりを簡単に(??)立てられるので、まぁ、ありがたいですねー…。
-  ClearDB MySQL - Add-ons - Heroku Elements &amp;#x21a9;&amp;#xfe0e;
+  ClearDB MySQL - Add-ons - Heroku Elements&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     
@@ -77,7 +94,7 @@ MySQL も出来ない訳じゃないんですけど1 まぁ、順当に言って
       <description>
  ImgBB — フリーなスマイリー / アニメエモコン  たまにスクショとかを貼りたい時があって。 図解とか細かい記事だと、 Qiita や Zenn の方が良いんでしょうけど、ここは個人の日記サイトだしね…。
 という事で、適当にググって、適当にアップロードして、上記サイトを試してみることにしました。 1
-  まぁ、削除されても、そんなに重要な画像でもないし…。 &amp;#x21a9;&amp;#xfe0e;
+  まぁ、削除されても、そんなに重要な画像でもないし…。&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     
@@ -93,8 +110,8 @@ Validator を DI する時に、設定を注入出来ないかな？って思っ
 なので、Eclipse に PropertiesEditor をインストールしようと思って、 ぐぐって Eclipseで文字化けするプロパティファイルを編集する方法 を参考にインストール…、しようと思っても入らない!!
 まぁ、そういう事情もありましたよね 1 2 で、ドメイン/ホストを色々打ち替えて、上記のリポジトリーURLが分かった次第。
 本質的には、 JakartaEE / Hibernate が、メッセージファイルのフォーマットをUTF-8に公式対応してくれれば、それが良いのでしょうが…。
-  ニュース: OSDNにおけるアドウェア、不適切な広告についてのポリシーの現状について - OSDN運営・管理 - OSDN &amp;#x21a9;&amp;#xfe0e;
- OSSサイトの「SourceForge」が改称へ　「OSDN」に - ITmedia エンタープライズ &amp;#x21a9;&amp;#xfe0e;
+  ニュース: OSDNにおけるアドウェア、不適切な広告についてのポリシーの現状について - OSDN運営・管理 - OSDN&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+ OSSサイトの「SourceForge」が改称へ　「OSDN」に - ITmedia エンタープライズ&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     
@@ -128,7 +145,7 @@ Chromeのdev-toolで、リクエストとかを見ていると、確かにAmazon
  ある程度ポータブルなものにしたいよね  オンプレとは言え、不定期にサーバーの統廃合があったりする サーバーの統廃合時に、cronタブの設定忘れたり サーバーごとに 秘伝のタレ の設定/シェルがあったり   ある程度複雑なロジックを伴うから、TDDとかやりたいよね  ちょっとした変更だって、やっぱり確認しながらやりたい   デプロイ時に漏れとか防ぎたいよね ソース管理もGitとかのVCSでやりたいよね  たまーに機能追加しようとすると、もういない担当者のPCの中にしかソースが…    …あれ? 結構条件ありますね。
 今、自分で作るとするなら、こんな感じかな
  ある程度枯れた、よく使われる軽量ライブラリの組合せで作る  GraalVMとか、まだ人類には早すぎるのでは… Jdbi のような軽量OR/M   変数を、環境変数や実行時変数から注入できる仕組みを組み込む  VCSで管理する以上、DB接続情報、メールサーバー接続情報等々をコミットするのは、アンチパターンでしょう Typesafe Config MicroProfile Configuration   ビジネスロジックをTDDで作るために、モックとか差し替えしたい  軽量DIコンテナを採用する Dagger   Maven/Gradleで、依存関係やバージョン情報を明示 実行可能なFatJarを作成して java --jar batch.jar だけで実行可能 実行は、cronではなく、バッチ実行の仕組みを別に用意する  Rundeck   そんなに頻繁な更新でなくとも、CI/CDの仕組みに乗せる  意外とやらないといけないこと多いですわ。
- 参考 Serverless時代のJavaについて    あるある案件 &amp;#x21a9;&amp;#xfe0e;</description>
+ 参考 Serverless時代のJavaについて    あるある案件&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description>
     </item>
     
     <item>
@@ -162,7 +179,7 @@ mvn eclipse:clean eclipse:eclipse  元ネタ Define Eclipse project encoding as 
       <guid>https://halflite.github.io/techlog/posts/20200214_maven_copy_dependencies/</guid>
       <description>また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
 mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
-  書いている時点のmavenバージョン 3.6.3 &amp;#x21a9;&amp;#xfe0e;
+  書いている時点のmavenバージョン 3.6.3&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     

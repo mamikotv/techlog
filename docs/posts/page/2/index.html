@@ -57,6 +57,40 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
+      <a href="/techlog/posts/20200222_temporary_file_delete_on_close/">
+        <div class="h2 mt-1 mb-1">Java NIO2 で一時ファイルを作成、処理後に削除</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2020-02-22</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something.  // 終わった後に一時ファイルを削除したい  } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー  } } 上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+ public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.
+    <a class="muted-link" href="/techlog/posts/20200222_temporary_file_delete_on_close/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
       <a href="/techlog/posts/20200214_maven_copy_dependencies/">
         <div class="h2 mt-1 mb-1">Mavenで依存関係あるライブラリをダウンロードしたいだけだった。</div>
       </a>
@@ -81,7 +115,7 @@
     
     また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
 mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
-  書いている時点のmavenバージョン 3.6.3 &#x21a9;&#xfe0e;
+  書いている時点のmavenバージョン 3.6.3&#160;&#x21a9;&#xfe0e;
    
     <a class="muted-link" href="/techlog/posts/20200214_maven_copy_dependencies/">…</a>
   </div>
@@ -307,7 +341,7 @@ hugo -D  以下、参考にした記事
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/etc" class="link-gray text-emphasized css-truncate-target"><span class="">Etc</span></a>
-      <span class="text-right Counter">3</span>
+      <span class="text-right Counter">4</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">

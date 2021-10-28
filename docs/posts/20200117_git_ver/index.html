@@ -85,12 +85,12 @@ sudo yum -y remove gitsudo yum -y install https://centos7.iuscommunity.org/ius-
 <li>しゃーない、一旦アンインストールして、リポジトリIUSを入れてして再度インスール…</li>
 <li>え&hellip;??? 依存ライブラリが無いの…???</li>
 </ol>
-<pre><code>sudo yum -y remove git
+<pre tabindex="0"><code>sudo yum -y remove git
 sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 sudo yum -y install git --enablerepo=ius --disablerepo=base
 </code></pre><p>上記ではダメなのです…!!! 依存ライブラリが入らないっ…!!!</p>
 <p>結局、こうなりますわ。</p>
-<pre><code>sudo yum -y remove git
+<pre tabindex="0"><code>sudo yum -y remove git
 sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 sudo yum -y install perl-TermReadKey emacs-filesystem perl-Error
 sudo yum -y install git --enablerepo=ius --disablerepo=base,epel,extras,updates

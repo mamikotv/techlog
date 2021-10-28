@@ -57,6 +57,47 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
+      <a href="/techlog/posts/20211027_hugo_docker/">
+        <div class="h2 mt-1 mb-1">Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+<a href='/techlog/tags/etc' class="muted-link">
+  <span class="Label Label--gray">etc</span>
+</a>
+
+
+      <div class="float-md-right">
+        <span>2021-10-27</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    bitter*smooth と言う音楽レビューサイトを作っています。
+この環境、サーバーサイドはNetlify/Hugo、ローカルではVSCodeでMarkdownを書く、と言う環境で構築しているのですが、あれ？そもそもVSCodeを使うなら、WSL2/DockerDesktop/Remote-Containersでローカル確認もすれば良いんじゃない？と思って、やったらサクッと出来ました！
+   Windows Terminalインストール
+  WSL2インストール
+ Windows Terminal を管理者権限で起動    wsl --install wsl --set-default-version 2 wsl --install -d Ubuntu   VSCodeインストール
+  Windows に Docker Desktop をインストール
+   まぁ、ここら辺までは、Windows10で開発している人ならフツーに出来るんでないでしょうか？
+で、プロジェクトのトップで、 .devcontainer ディレクトリを作り、その配下に、 Dockerfile devcontainer.json の2つのファイルを作ります。
+ .devcontainer/Dockerfile 1  FROMklakegg/hugo:0.88.0-alpineRUN apk update &amp;&amp; apk --no-cache add git .devcontainer/devcontainer.json 2  { &#34;name&#34;: &#34;bittersmooth&#34;, &#34;build&#34;: { &#34;dockerfile&#34;: &#34;Dockerfile&#34;, }, &#34;extensions&#34;: [ &#34;mhutchie.
+    <a class="muted-link" href="/techlog/posts/20211027_hugo_docker/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
       <a href="/techlog/posts/20200831_imgbb/">
         <div class="h2 mt-1 mb-1">imgbb.comのテスト</div>
       </a>
@@ -82,7 +123,7 @@
     
  ImgBB — フリーなスマイリー / アニメエモコン  たまにスクショとかを貼りたい時があって。 図解とか細かい記事だと、 Qiita や Zenn の方が良いんでしょうけど、ここは個人の日記サイトだしね…。
 という事で、適当にググって、適当にアップロードして、上記サイトを試してみることにしました。 1
-  まぁ、削除されても、そんなに重要な画像でもないし…。 &#x21a9;&#xfe0e;
+  まぁ、削除されても、そんなに重要な画像でもないし…。&#160;&#x21a9;&#xfe0e;
    
     <a class="muted-link" href="/techlog/posts/20200831_imgbb/">…</a>
   </div>
@@ -194,7 +235,7 @@ hugo -D  以下、参考にした記事
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/etc" class="link-gray text-emphasized css-truncate-target"><span class="">Etc</span></a>
-      <span class="text-right Counter">3</span>
+      <span class="text-right Counter">4</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">

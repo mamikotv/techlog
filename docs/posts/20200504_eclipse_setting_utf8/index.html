@@ -83,7 +83,7 @@ mvn eclipse:clean eclipse:eclipse  元ネタ Define Eclipse project encoding as 
     <p>WindowsマシンでEclipse使っていると、いつの間にか、ソースの文字コードがMS932になっていて、イラッとしません？</p>
 <p>Eclipseの設定から直しても、プロジェクトのクラスパス修正しようと、mvnコマンドで.settingsファイルを初期化したら、文字コード設定が、元に戻ってしまったりして…。</p>
 <p>解決策としては、プロジェクトのpom.xmlを、以下のように記述/変更します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#f92672">&lt;properties&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#f92672">&lt;properties&gt;</span>
     <span style="color:#f92672">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span style="color:#f92672">&lt;/project.build.sourceEncoding&gt;</span>
   <span style="color:#f92672">&lt;/properties&gt;</span>
 
@@ -110,7 +110,7 @@ mvn eclipse:clean eclipse:eclipse  元ネタ Define Eclipse project encoding as 
     <span style="color:#f92672">&lt;/plugins&gt;</span>
   <span style="color:#f92672">&lt;/build&gt;</span>
 </code></pre></div><p>で、Eclipse用の.settingsファイルを作り直すと、次からは、ソースコードの文字コードは、UTF-8になっています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mvn eclipse:clean eclipse:eclipse
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mvn eclipse:clean eclipse:eclipse
 </code></pre></div><ul>
 <li>元ネタ <a href="https://stackoverflow.com/a/7605915" title="Define Eclipse project encoding as UTF-8 from Maven - Stack Overflow">Define Eclipse project encoding as UTF-8 from Maven - Stack Overflow</a></li>
 </ul>

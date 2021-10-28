@@ -6,7 +6,16 @@
     <description>Recent content in Tags on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>etc</title>
+      <link>https://halflite.github.io/techlog/tags/etc/</link>
+      <pubDate>Wed, 27 Oct 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/tags/etc/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>java</title>
       <link>https://halflite.github.io/techlog/tags/java/</link>
@@ -31,15 +40,6 @@
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0900</pubDate>
       
       <guid>https://halflite.github.io/techlog/tags/vagrant/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>etc</title>
-      <link>https://halflite.github.io/techlog/tags/etc/</link>
-      <pubDate>Mon, 31 Aug 2020 01:00:00 +0900</pubDate>
-      
-      <guid>https://halflite.github.io/techlog/tags/etc/</guid>
       <description></description>
     </item>
     

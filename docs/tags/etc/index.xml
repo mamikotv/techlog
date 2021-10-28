@@ -6,7 +6,24 @@
     <description>Recent content in etc on ひとり開発日記。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 31 Aug 2020 01:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://halflite.github.io/techlog/tags/etc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています</title>
+      <link>https://halflite.github.io/techlog/posts/20211027_hugo_docker/</link>
+      <pubDate>Wed, 27 Oct 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://halflite.github.io/techlog/posts/20211027_hugo_docker/</guid>
+      <description>bitter*smooth と言う音楽レビューサイトを作っています。
+この環境、サーバーサイドはNetlify/Hugo、ローカルではVSCodeでMarkdownを書く、と言う環境で構築しているのですが、あれ？そもそもVSCodeを使うなら、WSL2/DockerDesktop/Remote-Containersでローカル確認もすれば良いんじゃない？と思って、やったらサクッと出来ました！
+   Windows Terminalインストール
+  WSL2インストール
+ Windows Terminal を管理者権限で起動    wsl --install wsl --set-default-version 2 wsl --install -d Ubuntu   VSCodeインストール
+  Windows に Docker Desktop をインストール
+   まぁ、ここら辺までは、Windows10で開発している人ならフツーに出来るんでないでしょうか？
+で、プロジェクトのトップで、 .devcontainer ディレクトリを作り、その配下に、 Dockerfile devcontainer.json の2つのファイルを作ります。
+ .devcontainer/Dockerfile 1  FROMklakegg/hugo:0.88.0-alpineRUN apk update &amp;amp;&amp;amp; apk --no-cache add git .devcontainer/devcontainer.json 2  { &amp;#34;name&amp;#34;: &amp;#34;bittersmooth&amp;#34;, &amp;#34;build&amp;#34;: { &amp;#34;dockerfile&amp;#34;: &amp;#34;Dockerfile&amp;#34;, }, &amp;#34;extensions&amp;#34;: [ &amp;#34;mhutchie.</description>
+    </item>
+    
     <item>
       <title>imgbb.comのテスト</title>
       <link>https://halflite.github.io/techlog/posts/20200831_imgbb/</link>
@@ -16,7 +33,7 @@
       <description>
  ImgBB — フリーなスマイリー / アニメエモコン  たまにスクショとかを貼りたい時があって。 図解とか細かい記事だと、 Qiita や Zenn の方が良いんでしょうけど、ここは個人の日記サイトだしね…。
 という事で、適当にググって、適当にアップロードして、上記サイトを試してみることにしました。 1
-  まぁ、削除されても、そんなに重要な画像でもないし…。 &amp;#x21a9;&amp;#xfe0e;
+  まぁ、削除されても、そんなに重要な画像でもないし…。&amp;#160;&amp;#x21a9;&amp;#xfe0e;
    </description>
     </item>
     

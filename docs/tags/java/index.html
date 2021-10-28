@@ -84,8 +84,8 @@
  JDK(OracleとかOpenJDK)をインストール、パスを通す Mavenをインストール、パスを通す Eclipseをインストール、各種フォーマッターをインストール  今は、2021年6月です。 こう言うのは避けたいですよね。
  JDK/JREのバージョンを切り替えるのが難しい  JDK/JREは後方互換を重視していたので、ちょっとしたことで対応が難しい 現在の Eclipse って、必要なJDK/JREって、15ですよね Java 11/15で後方互換が切り捨てられたのもあるので、対応はそれなりに必要でしょう 1   Windows10でJava開発環境整える  それだけで、一体、いくらのソフトをダウンロードするんです? JDK/Maven/Eclipse のインストールは、大体において鬼門だったりしますね 隣の席の人と、Eclipseのバージョン合ってます？ Mavenでも、変な対応が入ることがありますよ 2     まぁ、結局、以下の如しですわ。
  まず世間のIT関連のPCはWindows10ベースなので、それを考える ローカル開発環境に、極力インストールさせない Gitからチェックアウトしたら、すぐ全員の環境と同じになる  ここら辺、あなたならどう考えるでしょうね?
-  JAXB対応 https://github.com/acroquest/javabook-support/issues/49 &#x21a9;&#xfe0e;
- Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019 &#x21a9;&#xfe0e;
+  JAXB対応 https://github.com/acroquest/javabook-support/issues/49&#160;&#x21a9;&#xfe0e;
+ Maven 3.8.1 で mvn install 出来ない(maven-default-http-blocker)されたメモ https://qiita.com/bazoo/items/3b5cab094b25cbbd8019&#160;&#x21a9;&#xfe0e;
    
     <a class="muted-link" href="/techlog/posts/20210627_java_dev/">…</a>
   </div>
@@ -169,8 +169,8 @@ Validator を DI する時に、設定を注入出来ないかな？って思っ
 なので、Eclipse に PropertiesEditor をインストールしようと思って、 ぐぐって Eclipseで文字化けするプロパティファイルを編集する方法 を参考にインストール…、しようと思っても入らない!!
 まぁ、そういう事情もありましたよね 1 2 で、ドメイン/ホストを色々打ち替えて、上記のリポジトリーURLが分かった次第。
 本質的には、 JakartaEE / Hibernate が、メッセージファイルのフォーマットをUTF-8に公式対応してくれれば、それが良いのでしょうが…。
-  ニュース: OSDNにおけるアドウェア、不適切な広告についてのポリシーの現状について - OSDN運営・管理 - OSDN &#x21a9;&#xfe0e;
- OSSサイトの「SourceForge」が改称へ　「OSDN」に - ITmedia エンタープライズ &#x21a9;&#xfe0e;
+  ニュース: OSDNにおけるアドウェア、不適切な広告についてのポリシーの現状について - OSDN運営・管理 - OSDN&#160;&#x21a9;&#xfe0e;
+ OSSサイトの「SourceForge」が改称へ　「OSDN」に - ITmedia エンタープライズ&#160;&#x21a9;&#xfe0e;
    
     <a class="muted-link" href="/techlog/posts/20200728_eclipse_pe/">…</a>
   </div>
@@ -209,7 +209,7 @@ Validator を DI する時に、設定を注入出来ないかな？って思っ
  ある程度ポータブルなものにしたいよね  オンプレとは言え、不定期にサーバーの統廃合があったりする サーバーの統廃合時に、cronタブの設定忘れたり サーバーごとに 秘伝のタレ の設定/シェルがあったり   ある程度複雑なロジックを伴うから、TDDとかやりたいよね  ちょっとした変更だって、やっぱり確認しながらやりたい   デプロイ時に漏れとか防ぎたいよね ソース管理もGitとかのVCSでやりたいよね  たまーに機能追加しようとすると、もういない担当者のPCの中にしかソースが…    …あれ? 結構条件ありますね。
 今、自分で作るとするなら、こんな感じかな
  ある程度枯れた、よく使われる軽量ライブラリの組合せで作る  GraalVMとか、まだ人類には早すぎるのでは… Jdbi のような軽量OR/M   変数を、環境変数や実行時変数から注入できる仕組みを組み込む  VCSで管理する以上、DB接続情報、メールサーバー接続情報等々をコミットするのは、アンチパターンでしょう Typesafe Config MicroProfile Configuration   ビジネスロジックをTDDで作るために、モックとか差し替えしたい  軽量DIコンテナを採用する Dagger   Maven/Gradleで、依存関係やバージョン情報を明示 実行可能なFatJarを作成して java --jar batch.jar だけで実行可能 実行は、cronではなく、バッチ実行の仕組みを別に用意する  Rundeck   そんなに頻繁な更新でなくとも、CI/CDの仕組みに乗せる  意外とやらないといけないこと多いですわ。
- 参考 Serverless時代のJavaについて    あるある案件 &#x21a9;&#xfe0e;
+ 参考 Serverless時代のJavaについて    あるある案件&#160;&#x21a9;&#xfe0e;
     <a class="muted-link" href="/techlog/posts/20200625_java_based_batch/">…</a>
   </div>
 </div>
@@ -315,7 +315,7 @@ mvn eclipse:clean eclipse:eclipse  元ネタ Define Eclipse project encoding as 
     
     また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
 mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
-  書いている時点のmavenバージョン 3.6.3 &#x21a9;&#xfe0e;
+  書いている時点のmavenバージョン 3.6.3&#160;&#x21a9;&#xfe0e;
    
     <a class="muted-link" href="/techlog/posts/20200214_maven_copy_dependencies/">…</a>
   </div>
@@ -387,7 +387,7 @@ mvn archetype:generate ^-DarchetypeArtifactId=maven-archetype-quickstart ^-Din
     
     <span class="css-truncate no-wrap m-1 pl-1">
       <a href="/techlog/tags/etc" class="link-gray text-emphasized css-truncate-target"><span class="">Etc</span></a>
-      <span class="text-right Counter">3</span>
+      <span class="text-right Counter">4</span>
     </span>
     
     <span class="css-truncate no-wrap m-1 pl-1">

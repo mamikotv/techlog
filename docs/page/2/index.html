@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.80.0" />
+	<meta name="generator" content="Hugo 0.88.0" />
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,6 +55,18 @@
   
   <div>
     <div>
+      <a href="/techlog/posts/20200222_temporary_file_delete_on_close/">
+        <h3>Java NIO2 で一時ファイルを作成、処理後に削除</h3>
+      </a>
+      <small>https://halflite.github.io/techlog/posts/20200222_temporary_file_delete_on_close/</small>
+      2020-02-22
+    </div>
+    public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Writer writer = Files.newBufferedWriter(tempFilePath)) { // do something.  // 終わった後に一時ファイルを削除したい  } } catch (IOException e) { // ログとか出したり、または、別の例外再スロー  } } 上記のような処理で、「一時ファイルを作成、処理後に削除」って、どうやるんだっけ、って、思い出すのに四苦八苦してしまったので…。1
+ public static Closeable deleteOnClose(final Path tempFilePath) { return new Closeable() { @Override public void close() throws IOException { Files.deleteIfExists(tempFilePath); } }; } public void doSomething() { try { Path tempFilePath = Files.createTempFile(&#34;id&#34;, &#34;.tmp&#34;); try (Closeable closeable = deleteOnClose(tempFilePath); Writer writer = Files.
+  </div>
+  
+  <div>
+    <div>
       <a href="/techlog/posts/20200214_maven_copy_dependencies/">
         <h3>Mavenで依存関係あるライブラリをダウンロードしたいだけだった。</h3>
       </a>
@@ -63,7 +75,7 @@
     </div>
     また、以前blogに書いていたのに、すっかり忘れてググってしまったので。
 mvn dependency:copy-dependencies -DincludeScope=test 上記を実行すると、プロジェクト配下の target/dependency に、テストスコープのものも含めて、 *.jar ファイルがダウンロードされます。1
-  書いている時点のmavenバージョン 3.6.3 &#x21a9;&#xfe0e;
+  書いている時点のmavenバージョン 3.6.3&#160;&#x21a9;&#xfe0e;
    
   </div>
   

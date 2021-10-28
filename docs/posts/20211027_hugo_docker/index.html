@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています &ndash; ひとり開発日記。
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="bitter*smooth と言う音楽レビューサイトを作っています。
+この環境、サーバーサイドはNetlify/Hugo、ローカルではVSCodeでMarkdownを書く、と言う環境で構築しているのですが、あれ？そもそもVSCodeを使うなら、WSL2/DockerDesktop/Remote-Containersでローカル確認もすれば良いんじゃない？と思って、やったらサクッと出来ました！
+   Windows Terminalインストール
+  WSL2インストール
+ Windows Terminal を管理者権限で起動    wsl --install wsl --set-default-version 2 wsl --install -d Ubuntu   VSCodeインストール
+  Windows に Docker Desktop をインストール
+   まぁ、ここら辺までは、Windows10で開発している人ならフツーに出来るんでないでしょうか？
+で、プロジェクトのトップで、 .devcontainer ディレクトリを作り、その配下に、 Dockerfile devcontainer.json の2つのファイルを作ります。
+ .devcontainer/Dockerfile 1  FROMklakegg/hugo:0.88.0-alpineRUN apk update &amp;amp;&amp;amp; apk --no-cache add git .devcontainer/devcontainer.json 2  { &amp;#34;name&amp;#34;: &amp;#34;bittersmooth&amp;#34;, &amp;#34;build&amp;#34;: { &amp;#34;dockerfile&amp;#34;: &amp;#34;Dockerfile&amp;#34;, }, &amp;#34;extensions&amp;#34;: [ &amp;#34;mhutchie.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="ひとり開発日記。">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/techlog/assets/syntax.css">
+    <link rel="stylesheet" href="/techlog/assets/primer-build.css">
+    <link rel="stylesheet" href="/techlog/assets/style.css">
+    <link rel="stylesheet" href="/techlog/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://halflite.github.io/techlog/">
+    ひとり開発日記。
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+<a href='/techlog/tags/etc' class="muted-link">
+  <span class="Label Label--gray">etc</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-10-27. Published at: 2021-10-27.">
+        
+          Published: 2021-10-27
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><a href="https://bittersmooth.halflite.net/" title="bitter*smooth">bitter*smooth</a> と言う音楽レビューサイトを作っています。</p>
+<p>この環境、サーバーサイドはNetlify/Hugo、ローカルではVSCodeでMarkdownを書く、と言う環境で構築しているのですが、あれ？そもそもVSCodeを使うなら、WSL2/DockerDesktop/Remote-Containersでローカル確認もすれば良いんじゃない？と思って、やったらサクッと出来ました！</p>
+<hr>
+<ul>
+<li>
+<p><a href="https://atmarkit.itmedia.co.jp/ait/articles/2104/01/news019.html" title="ついにWindows Terminalの設定がGUIで可能に　プレビュー版v1.7が公開【Windows Terminal完全マスター】：Windows 10 The Latest（1/2 ページ） - ＠IT">Windows Terminalインストール</a></p>
+</li>
+<li>
+<p>WSL2インストール</p>
+<ul>
+<li>Windows Terminal を管理者権限で起動</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">wsl --install
+wsl --set-default-version 2
+wsl --install -d Ubuntu
+</code></pre></div><ul>
+<li>
+<p><a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" title="Visual Studio Code – コード エディター | Microsoft Azure">VSCodeインストール</a></p>
+</li>
+<li>
+<p><a href="https://docs.docker.jp/docker-for-windows/install.html" title="Windows に Docker Desktop をインストール — Docker-docs-ja 19.03 ドキュメント">Windows に Docker Desktop をインストール</a></p>
+</li>
+</ul>
+<hr>
+<p>まぁ、ここら辺までは、Windows10で開発している人ならフツーに出来るんでないでしょうか？</p>
+<p>で、プロジェクトのトップで、 <code>.devcontainer</code> ディレクトリを作り、その配下に、 <code>Dockerfile</code> <code>devcontainer.json</code> の2つのファイルを作ります。</p>
+<ul>
+<li><code>.devcontainer/Dockerfile</code> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> klakegg/hugo:0.88.0-alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk update <span style="color:#f92672">&amp;&amp;</span> apk --no-cache add git<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><ul>
+<li><code>.devcontainer/devcontainer.json</code> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+	<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;bittersmooth&#34;</span>,
+	<span style="color:#f92672">&#34;build&#34;</span>: {
+		<span style="color:#f92672">&#34;dockerfile&#34;</span>: <span style="color:#e6db74">&#34;Dockerfile&#34;</span>,
+	},
+	<span style="color:#f92672">&#34;extensions&#34;</span>: [
+		<span style="color:#e6db74">&#34;mhutchie.git-graph&#34;</span>
+	]
+}
+</code></pre></div><ul>
+<li><a href="https://docs.microsoft.com/ja-jp/learn/modules/use-docker-container-dev-env-vs-code/" title="Visual Studio Code を使用して Docker コンテナーを開発環境として使用する - Learn | Microsoft Docs">Visual Studio Code を使用して Docker コンテナーを開発環境として使用する - Learn | Microsoft Docs</a></li>
+</ul>
+<hr>
+<p>簡単に <code>Hugo</code> の環境が手に入るのですが、コレひとつだけ落とし穴があって、 <code>hugo server -w</code> でライブローディングが効かないんですね。 まぁ、VSCodeだとMarkdownのプレビューも簡単ですし、最終確認だけ <code>hugo server -w</code> で確認すれば良いのかな？と言う感じでやっています。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>alpineベースのイメージだと、Gitすら入っていないので <code>apk --no-cache add git</code> が、必要なのです。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>拡張機能、 <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph" title="Git Graph - Visual Studio Marketplace">Git Graph</a> 位は欲しいですよね…。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Windows10/VSCode/WSL2/Docker/Hugoでblogを書いています</b><nav id="TableOfContents"></nav></div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
