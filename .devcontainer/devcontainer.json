@@ -1,0 +1,9 @@
+{
+	"name": "techlog",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	"extensions": [
+    "mhutchie.git-graph"
+  ]
+}
